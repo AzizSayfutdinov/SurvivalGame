@@ -11,7 +11,7 @@ public class Tile {
     //STATIC STUFF: Used as Tile Manager
 
     public static Tile[] tiles = new Tile[1440];
-    
+
     public static void createTiles(){
 
         for(int i = 0; i < tiles.length; i++) {
@@ -21,9 +21,7 @@ public class Tile {
     }
 
     public static void init(){
-
         createTiles();
-
     }
 
 
