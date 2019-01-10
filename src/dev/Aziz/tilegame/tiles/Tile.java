@@ -21,18 +21,9 @@ public class Tile {
         }
     }
 
-    public static void solidifyTiles(){
-        tiles[445].setSolid(false);
-        tiles[446].setSolid(false);
-        tiles[406].setSolid(false);
-
-
-    }
-
     public static void init(){
 
         createTiles();
-        solidifyTiles();
 
     }
 
