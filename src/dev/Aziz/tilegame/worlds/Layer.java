@@ -4,11 +4,13 @@ import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.tiles.TileManager;
 import dev.Aziz.tilegame.utils.Utils;
 
+import java.awt.*;
+
 public class Layer {
 
-    private int[][] layerTilesID;
-    private Handler handler;
-    private TileManager tileManager;
+    protected int[][] tilesID;
+    protected Handler handler;
+    protected TileManager tileManager;
 
     public Layer(Handler handler){
 
@@ -18,27 +20,35 @@ public class Layer {
 
     }
 
-    public void loadLayer(String path){
+    public void loadLayer(String path, int index){
 
-        String file = Utils.loadFileAsString(path);
-        String[] tokens = file.split("\\s+");       //file.split(",") for comma
+        String file = Utils.loadXMLFileAsString(path, index);
+        String[] tokens = file.split(",");       //file.split(",") for comma
 
-        layerTilesID = new int[handler.getWorld().getWidth()][handler.getWorld().getHeight()];
+        tilesID = new int[handler.getWorld().getWidth()][handler.getWorld().getHeight()];
 
         for(int y = 0; y < handler.getWorld().getHeight(); y++){
             for(int x = 0; x < handler.getWorld().getWidth(); x++){
-                layerTilesID[x][y] = Utils.parseInt(tokens[(x + y * handler.getWorld().getWidth())]);  //finding the corresponding data
+                tilesID[x][y] = Utils.parseInt(tokens[(x + y * handler.getWorld().getWidth())]);  //finding the corresponding data
             }
         }
 
     }
 
-    public int getLayerTilesID(int x, int y) {
-        return layerTilesID[x][y];
+    public void tick(){
+
     }
 
-    public void setLayerTilesID(int[][] layerTilesID) {
-        this.layerTilesID = layerTilesID;
+    public void render(Graphics g){
+        tileManager.render(g);
+    }
+
+    public int getTilesID(int x, int y) {
+        return tilesID[x][y];
+    }
+
+    public void setTilesID(int[][] tilesID) {
+        this.tilesID = tilesID;
     }
 
     public Handler getHandler() {

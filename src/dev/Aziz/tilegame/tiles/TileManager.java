@@ -80,7 +80,11 @@ public class TileManager {
 
         for(int y = yStart; y < yEnd; y++){
             for(int x = xStart; x < xEnd; x++){
-                getTile(x,y).render(g, (int) (x*Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),(int) (y*Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
+                if(getTile(x,y).getId() == 1403){
+
+                }
+                else
+                    getTile(x,y).render(g, (int) (x*Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),(int) (y*Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
 
@@ -90,13 +94,19 @@ public class TileManager {
     public Tile getTile(int x,int y){
 
         if(x < 0 || y < 0 || x >= handler.getWorld().getWidth() || y >= handler.getWorld().getHeight()){
-            return tiles.get(1);      //default return value
+            return tiles.get(1403);      //default return value
         }
 
-        Tile t = tiles.get(handler.getWorld().getTilesID(x, y, -1));
+        Tile t;
+
+        if(handler.getWorld().getTilesID(x,y,-1) < 0) {
+            t = tiles.get(1403);
+        } else {
+            t = tiles.get(handler.getWorld().getTilesID(x, y, -1));
+        }
 
         if(t == null){
-            return tiles.get(1);
+            return tiles.get(1403);
         }
         return t;
     }
