@@ -38,16 +38,8 @@ public class World {
 
         tileManager = new TileManager(handler);
 
-        //for(int i = 0;i < 2; i++){
-        //    for (int j = 0; j < 2; j++){
-        //        entityManager.addEntity(new Tree(handler, 200 + i * 350, 100 + j * 400));
-        //    }
-        //}
-        //entityManager.addEntity(new Rock(handler, 100, 400));
-        //entityManager.addEntity(new Tree(handler, 300, 300));
-        //entityManager.addEntity(new Enemy(handler,700, 100));
-        //entityManager.addEntity(new Enemy(handler,600, 100));
-        //entityManager.addEntity(new Enemy(handler,500, 100));
+        entityManager.addEntity(new Enemy(handler,500, 100));
+
         entityManager.addEntity(new TestEntity(handler, 200, 200));
 
         loadWorld(path);
@@ -57,6 +49,8 @@ public class World {
 
 
     }
+
+
 
     public void tick(){
         entityManager.tick();
@@ -75,7 +69,7 @@ public class World {
     private void loadWorld(String path){
 
         String file = Utils.loadFileAsString(path);
-        String[] tokens = file.split("\\s+");
+        String[] tokens = file.split("\\s+");       //file.split(",") for comma
         width = Utils.parseInt(tokens[0]);
         height = Utils.parseInt(tokens[1]);
         spawnX = Utils.parseInt(tokens[2]);

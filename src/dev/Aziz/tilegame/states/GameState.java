@@ -12,7 +12,8 @@ public class GameState extends State {
     public GameState(Handler handler){
         super(handler);
         //this.world = new World(handler, "res/worlds/world1.txt");
-        this.world = new World(handler, "res/map/Map2/map2.txt");
+        //this.world = new World(handler, "res/map/Map2/map2.txt");
+        this.world = new World(handler, "res/worlds/world3.txt");
         handler.setWorld(world);
 
     }

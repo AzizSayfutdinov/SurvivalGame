@@ -12,7 +12,7 @@ public class TileManager {
 
     private Handler handler;
     private ArrayList<Tile> tiles;
-    private ArrayList<Integer> solidTiles = new ArrayList<>();
+    private ArrayList<Integer> solidTiles;
 
 
     public TileManager(Handler handler){
@@ -49,11 +49,21 @@ public class TileManager {
 
     }
 
+
+
     private void createSolidTiles(){
-        solidTiles.add(406);
-        solidTiles.add(408);
-        solidTiles.add(445);
-        solidTiles.add(367);
+
+        addSolidTile(486);
+        addSolidTile(405);
+        addSolidTile(407);
+        addSolidTile(365);
+        addSolidTile(366);
+        addSolidTile(367);
+
+    }
+
+    private void addSolidTile(int mapIndex){
+        solidTiles.add(mapIndex - 1);
     }
 
     public void tick(){

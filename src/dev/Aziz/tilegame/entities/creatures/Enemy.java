@@ -22,7 +22,7 @@ public class Enemy extends Creature {
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
 
 
-    private int speed = 2;
+    private int speed = 4;
 
 
 
