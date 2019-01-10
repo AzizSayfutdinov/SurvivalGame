@@ -9,6 +9,7 @@ import dev.Aziz.tilegame.entities.statics.TestEntity;
 import dev.Aziz.tilegame.entities.statics.Tree;
 import dev.Aziz.tilegame.items.ItemManager;
 import dev.Aziz.tilegame.tiles.Tile;
+import dev.Aziz.tilegame.tiles.TileManager;
 import dev.Aziz.tilegame.utils.Utils;
 
 import java.awt.*;
@@ -18,11 +19,12 @@ public class World {
     private Handler handler;
     private int width, height;
     private int spawnX, spawnY;     //From the world.txt file
-    private int[][] tiles;
+    private int[][] tilesID;
 
     //Entities
     private EntityManager entityManager;
     private ItemManager itemManager;
+    private TileManager tileManager;
 
     public EntityManager getEntityManager() {
         return entityManager;
@@ -33,6 +35,8 @@ public class World {
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
 
         itemManager = new ItemManager(handler);
+
+        tileManager = new TileManager(handler);
 
         //for(int i = 0;i < 2; i++){
         //    for (int j = 0; j < 2; j++){
@@ -46,11 +50,12 @@ public class World {
         //entityManager.addEntity(new Enemy(handler,500, 100));
         entityManager.addEntity(new TestEntity(handler, 200, 200));
 
-        Tile.init();
         loadWorld(path);
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
+
+
     }
 
     public void tick(){
@@ -60,34 +65,12 @@ public class World {
 
     public void render(Graphics g){
 
-        //To improve efficiency. We do not need to render all the tiles, but only those which are visible
-        int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH ); // divide by Tiles to get in Tiles not pixels
-        int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);
-        int yStart = (int)Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
-        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT + 1);
 
-        for(int y = yStart; y < yEnd; y++){
-            for(int x = xStart; x < xEnd; x++){
-                getTile(x,y).render(g, (int) (x*Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),(int) (y*Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
-            }
-        }
-
+        tileManager.render(g);
         itemManager.render(g);
         entityManager.render(g);
     }
 
-    public Tile getTile(int x,int y){
-
-        if(x < 0 || y < 0 || x >= width || y >= height){
-            return Tile.tiles[445];
-        }
-
-        Tile t = Tile.tiles[tiles[x][y] - 1];
-        if(t == null){
-            return Tile.tiles[0];
-        }
-        return t;
-    }
 
     private void loadWorld(String path){
 
@@ -98,37 +81,18 @@ public class World {
         spawnX = Utils.parseInt(tokens[2]);
         spawnY = Utils.parseInt(tokens[3]);
 
-        tiles = new int[width][height];
+        tilesID = new int[width][height];
 
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
-                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);  //finding the corresponding data
+                tilesID[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);  //finding the corresponding data
             }
         }
-
-        Tile.createTiles();
 
     }
 
-    private void loadWorld2(String path){
-
-        String file = Utils.loadFileAsString(path);
-        String[] tokens = file.split("\\s+");
-        width = Utils.parseInt(tokens[0]);
-        height = Utils.parseInt(tokens[1]);
-        spawnX = Utils.parseInt(tokens[2]);
-        spawnY = Utils.parseInt(tokens[3]);
-
-        tiles = new int[width][height];
-
-        for(int y = 0; y < height; y++){
-            for(int x = 0; x < width; x++){
-                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);  //finding the corresponding data
-            }
-        }
-
-
-
+    public int getTilesID(int x, int y, int offset) {
+        return tilesID[x][y] + offset;
     }
 
     public int getWidth(){
@@ -152,5 +116,13 @@ public class World {
 
     public void setItemManager(ItemManager itemManager) {
         this.itemManager = itemManager;
+    }
+
+    public TileManager getTileManager() {
+        return tileManager;
+    }
+
+    public void setTileManager(TileManager tileManager) {
+        this.tileManager = tileManager;
     }
 }
