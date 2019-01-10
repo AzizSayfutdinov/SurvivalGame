@@ -12,6 +12,9 @@ public class TileManager {
 
     public TileManager(Handler handler){
 
+        this.handler = handler;
+        tiles = new ArrayList<>();
+
 
 
 
