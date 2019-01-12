@@ -50,7 +50,6 @@ public class TileManager {
     }
 
 
-
     private void createSolidTiles(){
 
         addSolidTile(486);

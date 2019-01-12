@@ -6,13 +6,11 @@ import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.statics.TestEntity;
 import dev.Aziz.tilegame.items.ItemManager;
-import dev.Aziz.tilegame.tiles.Tile;
-import dev.Aziz.tilegame.tiles.TileManager;
-import dev.Aziz.tilegame.utils.Utils;
+
 
 import java.awt.*;
 
-public class World extends Layer{
+public class World extends Layer{       //delete extension of world from layer
 
 
     public static final int SPAWN_X = 100;
@@ -24,7 +22,6 @@ public class World extends Layer{
     //Entities
     private EntityManager entityManager;
     private ItemManager itemManager;
-    private TileManager tileManager;
 
 
     public EntityManager getEntityManager() {
@@ -33,7 +30,6 @@ public class World extends Layer{
 
     public World(Handler handler, String path){
         super(handler);
-        tileManager = new TileManager(handler);
 
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
         itemManager = new ItemManager(handler);
@@ -58,14 +54,14 @@ public class World extends Layer{
 
     public void render(Graphics g){
 
-        tileManager.render(g);
+        super.render(g);
         itemManager.render(g);
         entityManager.render(g);
 
     }
 
     private void loadWorld(String path, int index){
-
+        System.out.println("World: ");
         loadLayer(path, index);
 
     }
