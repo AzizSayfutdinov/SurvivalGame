@@ -46,8 +46,8 @@ public class Assets {
 
         worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Overworld.png"));
 
-
         inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
+
 
         enemy_up = new BufferedImage[9];
         enemy_down = new BufferedImage[9];
