@@ -21,7 +21,7 @@ public class TestEntity extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.worldTiles[0], (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), Creature.DEFAULT_CREATURE_WIDTH,Creature.DEFAULT_CREATURE_HEIGHT, null);
+        g.drawImage(Assets.worldTiles[1], (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), Creature.DEFAULT_CREATURE_WIDTH,Creature.DEFAULT_CREATURE_HEIGHT, null);
     }
 
     @Override

@@ -10,26 +10,16 @@ public class Tile {
 
     //STATIC STUFF: Used as Tile Manager
 
-    public static Tile[] tiles = new Tile[1440];
+    // Es macht keinen Sinn die Tiles static zu machen, weil ich sie dynamisch ändern will.
+    // Manchmal sollte man durch ein Tile durchgehen können und manchmal nicht.
 
-    public static void createTiles(){
-
-        for(int i = 0; i < tiles.length; i++) {
-
-            tiles[i] = new WorldTile(Assets.worldTiles[i], i, false);
-        }
-    }
-
-    public static void init(){
-        createTiles();
-    }
 
 
     //CLASS
 
     public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 
-    protected boolean solid = true;
+    protected boolean solid = false;
 
     protected BufferedImage texture;
     protected final int id;
@@ -38,7 +28,6 @@ public class Tile {
         this.texture = texture;
         this.id = id;
 
-        tiles[id] = this;
     }
 
     public void tick(){

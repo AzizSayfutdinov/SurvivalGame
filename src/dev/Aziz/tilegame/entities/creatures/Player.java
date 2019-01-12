@@ -22,6 +22,17 @@ public class Player extends Creature {
     private Animation animPantsUp;
     private Animation animPantsRight;
     private Animation animPantsLeft;
+    //Sword
+    private Animation animSwordDown;
+    private Animation animSwordUp;
+    private Animation animSwordRight;
+    private Animation animSwordLeft;
+    //Attack
+    private Animation animAttackDown;
+    private Animation animAttackUp;
+    private Animation animAttackRight;
+    private Animation animAttackLeft;
+
 
 
 
@@ -48,10 +59,21 @@ public class Player extends Creature {
         animUp = new Animation(playerSpeed, Assets.player_up);
         animRight = new Animation(playerSpeed, Assets.player_right);
         animLeft = new Animation(playerSpeed, Assets.player_left);
+
         animPantsDown = new Animation(playerSpeed, Assets.player_pants_down);
         animPantsUp = new Animation(playerSpeed, Assets.player_pants_up);
         animPantsRight = new Animation(playerSpeed, Assets.player_pants_right);
         animPantsLeft = new Animation(playerSpeed, Assets.player_pants_left);
+
+        animSwordDown = new Animation(playerSpeed, Assets.player_sword_down);
+        animSwordUp = new Animation(playerSpeed, Assets.player_sword_up);
+        animSwordRight = new Animation(playerSpeed, Assets.player_sword_right);
+        animSwordLeft = new Animation(playerSpeed, Assets.player_sword_left);
+
+        animAttackDown = new Animation(playerSpeed, Assets.player_down_attacking);
+        animAttackUp = new Animation(playerSpeed, Assets.player_up_attacking);
+        animAttackRight = new Animation(playerSpeed, Assets.player_right_attacking);
+        animAttackLeft = new Animation(playerSpeed, Assets.player_left_attacking);
 
         //Inventory
         inventory = new Inventory(handler);
@@ -69,6 +91,14 @@ public class Player extends Creature {
         animPantsUp.tick();
         animPantsRight.tick();
         animPantsLeft.tick();
+        animSwordDown.tick();
+        animSwordUp.tick();
+        animSwordLeft.tick();
+        animSwordRight.tick();
+        animAttackLeft.tick();
+        animAttackRight.tick();
+        animAttackUp.tick();
+        animAttackDown.tick();
 
         die();
         //Movement
@@ -102,16 +132,16 @@ public class Player extends Creature {
         ar.width = arSize;
         ar.height = arSize;
 
-        if(handler.getKeyManager().aUp){
+        if(handler.getKeyManager().attackUp){
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y - arSize;                       // -arSize because we attack upwards
-        } else if(handler.getKeyManager().aDown){
+        } else if(handler.getKeyManager().attackDown){
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y + cb.height;
-        } else if(handler.getKeyManager().aLeft){
+        } else if(handler.getKeyManager().attackLeft){
             ar.x = cb.x - arSize;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
-        } else if(handler.getKeyManager().aRight){
+        } else if(handler.getKeyManager().attackRight){
             ar.x = cb.x + cb.width;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
         } else {
@@ -156,6 +186,7 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrameBody(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrameSword(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawImage(getCurrentAnimationFramePants(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
 
@@ -183,17 +214,29 @@ public class Player extends Creature {
         if(handler.getKeyManager().up){
             return animUp.getCurrentFrame();
         }
+        if(handler.getKeyManager().attackUp) {
+            return animAttackUp.getCurrentFrame();
+        }
         if(handler.getKeyManager().down){
             return animDown.getCurrentFrame();
+        }
+        if(handler.getKeyManager().attackDown){
+            return animAttackDown.getCurrentFrame();
         }
         if(handler.getKeyManager().left){
             return animLeft.getCurrentFrame();
         }
+        if(handler.getKeyManager().attackLeft){
+            return animAttackLeft.getCurrentFrame();
+        }
         if(handler.getKeyManager().right){
             return animRight.getCurrentFrame();
         }
+        if(handler.getKeyManager().attackRight){
+            return animAttackRight.getCurrentFrame();
+        }
 
-        return animDown.getFrameAtIndex(1);
+        return animDown.getFrameAtIndex(0);
     }
 
     private BufferedImage getCurrentAnimationFramePants(){
@@ -212,6 +255,24 @@ public class Player extends Creature {
         }
 
         return animPantsDown.getFrameAtIndex(1);
+    }
+
+    private BufferedImage getCurrentAnimationFrameSword(){
+
+        if(handler.getKeyManager().attackUp){
+            return animSwordUp.getCurrentFrame();
+        }
+        if(handler.getKeyManager().attackDown){
+            return animSwordDown.getCurrentFrame();
+        }
+        if(handler.getKeyManager().attackLeft){
+            return animSwordLeft.getCurrentFrame();
+        }
+        if(handler.getKeyManager().attackRight){
+            return animSwordDown.getCurrentFrame();
+        }
+
+        return getCurrentAnimationFrameBody();
     }
 
 

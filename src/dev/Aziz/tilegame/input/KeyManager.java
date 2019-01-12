@@ -7,7 +7,7 @@ public class KeyManager implements KeyListener {
 
     private boolean[] keys, justPressed, cantPress;
     public boolean up, down, left, right;
-    public boolean aUp, aDown, aLeft, aRight;
+    public boolean attackUp, attackDown, attackLeft, attackRight;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -39,10 +39,10 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
 
-        aDown = keys[KeyEvent.VK_DOWN];
-        aUp = keys[KeyEvent.VK_UP];
-        aLeft = keys[KeyEvent.VK_LEFT];
-        aRight = keys[KeyEvent.VK_RIGHT];
+        attackDown = keys[KeyEvent.VK_DOWN];
+        attackUp = keys[KeyEvent.VK_UP];
+        attackLeft = keys[KeyEvent.VK_LEFT];
+        attackRight = keys[KeyEvent.VK_RIGHT];
     }
 
     public boolean keyJustPressed(int keyCode){

@@ -11,8 +11,7 @@ public class GameState extends State {
 
     public GameState(Handler handler){
         super(handler);
-        //this.world = new World(handler, "res/worlds/world1.txt");
-        this.world = new World(handler, "res/map/Map2/map2.txt");
+        this.world = new World(handler, "res/map/Map5/map5.xml");
         handler.setWorld(world);
 
     }
@@ -27,6 +26,10 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+
         world.render(g);
+
+
+
     }
 }
