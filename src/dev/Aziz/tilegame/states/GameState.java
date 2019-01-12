@@ -1,6 +1,7 @@
 package dev.Aziz.tilegame.states;
 
 import dev.Aziz.tilegame.Handler;
+import dev.Aziz.tilegame.worlds.Layer;
 import dev.Aziz.tilegame.worlds.World;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ public class GameState extends State {
         super(handler);
         this.world = new World(handler, "res/map/Map5/map5.xml");
         handler.setWorld(world);
+        world.loadSolidLayer();
 
     }
 
@@ -29,7 +31,6 @@ public class GameState extends State {
 
         world.render(g);
 
-
-
     }
+
 }
