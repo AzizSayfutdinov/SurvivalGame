@@ -20,10 +20,10 @@ public class GameState extends State {
         handler.setWorld(world);
 
         layer1 = new Layer(handler);
-        layer1.loadLayer("res/map/Map5/map5.xml", 0);
+        layer1.loadLayer("res/map/Map5/map5.xml", 1);
 
         solidLayer = new Layer(handler);
-        solidLayer.loadLayer("res/map/Map5/map5.xml", 1);
+        solidLayer.loadLayer("res/map/Map5/map5.xml", 2);
 
     }
 
@@ -38,9 +38,10 @@ public class GameState extends State {
     @Override
     public void render(Graphics g) {
 
-        world.render(g);
+
         //layer1.render(g);
-        //solidLayer.render(g);
+        solidLayer.render(g);
+        //world.render(g);
 
 
 

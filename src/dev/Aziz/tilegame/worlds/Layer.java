@@ -8,9 +8,15 @@ import java.awt.*;
 
 public class Layer {
 
+    public static final int WORLD_WIDTH = 50;
+    public static final int WORLD_HEIGHT = 50;
+
     protected int[][] tilesID;
     protected Handler handler;
-    protected TileManager tileManager;
+    private TileManager tileManager;
+
+    protected int width = WORLD_WIDTH, height = WORLD_HEIGHT;
+
 
     public Layer(Handler handler){
 
@@ -25,13 +31,16 @@ public class Layer {
         String file = Utils.loadXMLFileAsString(path, index);
         String[] tokens = file.split(",");       //file.split(",") for comma
 
-        tilesID = new int[handler.getWorld().getWidth()][handler.getWorld().getHeight()];
-
-        for(int y = 0; y < handler.getWorld().getHeight(); y++){
-            for(int x = 0; x < handler.getWorld().getWidth(); x++){
-                tilesID[x][y] = Utils.parseInt(tokens[(x + y * handler.getWorld().getWidth())]);  //finding the corresponding data
+        tilesID = new int[width][height];
+        System.out.println("Layer-IDs: \n ------------------------------------------------------\n");
+        for(int y = 0; y < width; y++){
+            for(int x = 0; x < height; x++){
+                tilesID[x][y] = Utils.parseInt(tokens[(x + y * width)]);  //finding the corresponding data
+                System.out.print(tilesID[x][y] + " ");
             }
+            System.out.println("\n");
         }
+        System.out.println("Loading Layer finished! \n-----------------------------------------------------------------");
 
     }
 
@@ -43,8 +52,8 @@ public class Layer {
         tileManager.render(g);
     }
 
-    public int getTilesID(int x, int y) {
-        return tilesID[x][y];
+    public int getTilesID(int x, int y, int offset) {
+        return tilesID[x][y] + offset;
     }
 
     public void setTilesID(int[][] tilesID) {

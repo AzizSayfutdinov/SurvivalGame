@@ -81,7 +81,7 @@ public class TileManager {
         for(int y = yStart; y < yEnd; y++){
             for(int x = xStart; x < xEnd; x++){
                 if(getTile(x,y).getId() == 1403){
-
+                    System.out.println("0 TILE!!!!!");
                 }
                 else
                     getTile(x,y).render(g, (int) (x*Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),(int) (y*Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
