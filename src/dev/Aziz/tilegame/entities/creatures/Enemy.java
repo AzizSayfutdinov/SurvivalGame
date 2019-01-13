@@ -1,8 +1,18 @@
 package dev.Aziz.tilegame.entities.creatures;
 
+/*
+
+ *@startuml
+ * car--|> wheel
+ * @enduml
+
+ */
+
+
 import dev.Aziz.tilegame.Handler;
 
 import java.awt.*;
+
 
 
 public class Enemy extends Creature {
