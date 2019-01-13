@@ -18,7 +18,8 @@ public class Assets {
     public static BufferedImage[] player_down_attacking, player_up_attacking, player_right_attacking, player_left_attacking;
     public static BufferedImage[] player_pants_down, player_pants_up, player_pants_right, player_pants_left;
     public static BufferedImage[] player_sword_down, player_sword_up, player_sword_right, player_sword_left;
-    public static BufferedImage[] enemy_down, enemy_up, enemy_left, enemy_right;
+    public static BufferedImage[] skeleton_down, skeleton_up, skeleton_left, skeleton_right;
+    public static BufferedImage[] orc_down, orc_up, orc_left, orc_right;
     public static BufferedImage[] btn_start;
     public static BufferedImage[] btn_options;
     public static BufferedImage[] btn_credits;
@@ -33,7 +34,8 @@ public class Assets {
     private static SpriteSheet playerSwordAttackSheet;
     private static SpriteSheet sheet;
     private static SpriteSheet sheet3;
-    private static SpriteSheet enemySheet;
+    private static SpriteSheet skeletonSheet;
+    private static SpriteSheet orcSheet;
     private static SpriteSheet worldSheet;
     private static SpriteSheet menuSheet1;
     private static SpriteSheet menuSheet2;
@@ -53,17 +55,23 @@ public class Assets {
         playerSwordSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WEAPON_dagger.png"));
         playerAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_attacking.png"));
         playerSwordAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sword.png"));
-        enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_skeleton.png"));
+        skeletonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_skeleton.png"));
+        orcSheet = new SpriteSheet(ImageLoader.loadImage("/textures/orc.png"));
 
         worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Overworld.png"));
 
         inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 
 
-        enemy_up = new BufferedImage[9];
-        enemy_down = new BufferedImage[9];
-        enemy_left = new BufferedImage[9];
-        enemy_right = new BufferedImage[9];
+        skeleton_up = new BufferedImage[9];
+        skeleton_down = new BufferedImage[9];
+        skeleton_left = new BufferedImage[9];
+        skeleton_right = new BufferedImage[9];
+
+        orc_up = new BufferedImage[9];
+        orc_down = new BufferedImage[9];
+        orc_left = new BufferedImage[9];
+        orc_right = new BufferedImage[9];
 
         player_down = new BufferedImage[9];
         player_up = new BufferedImage[9];
@@ -117,6 +125,7 @@ public class Assets {
         // Enemy - Skeleton
 
         loadSkeleton();
+        loadOrc();
 
         // World Tiles
 
@@ -336,30 +345,63 @@ public class Assets {
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                enemy_up[i] = enemySheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
+                skeleton_up[i] = skeletonSheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
             else
-                enemy_up[i] = enemySheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
+                skeleton_up[i] = skeletonSheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                enemy_left[i] = enemySheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_left[i] = skeletonSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                enemy_left[i] = enemySheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_left[i] = skeletonSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                enemy_down[i] = enemySheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_down[i] = skeletonSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                enemy_down[i] = enemySheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_down[i] = skeletonSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                enemy_right[i] = enemySheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_right[i] = skeletonSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                enemy_right[i] = enemySheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_right[i] = skeletonSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+    }
+
+
+    private static void loadOrc(){
+
+        for(int i = 0; i < 9; i++) {
+            if(i == 0)
+                orc_up[i] = orcSheet.crop(i * enemyWidth, 8 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_up[i] = orcSheet.crop(i * enemyWidth - 1, 8 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 9; i++) {
+            if(i == 0)
+                orc_left[i] = orcSheet.crop(i * enemyWidth, 9 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_left[i] = orcSheet.crop(i * enemyWidth - 1, 9 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 9; i++) {
+            if(i == 0)
+                orc_down[i] = orcSheet.crop(i * enemyWidth, 10 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_down[i] = orcSheet.crop(i * enemyWidth - 1, 10 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 9; i++) {
+            if(i == 0)
+                orc_right[i] = orcSheet.crop(i * enemyWidth, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_right[i] = orcSheet.crop(i * enemyWidth - 1, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
     }

@@ -3,7 +3,9 @@ package dev.Aziz.tilegame.worlds;
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.EntityManager;
 import dev.Aziz.tilegame.entities.creatures.Enemy;
+import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
+import dev.Aziz.tilegame.entities.creatures.Skeleton;
 import dev.Aziz.tilegame.entities.statics.TestEntity;
 import dev.Aziz.tilegame.items.ItemManager;
 import dev.Aziz.tilegame.tiles.TileManager;
@@ -19,6 +21,15 @@ public class World{       //delete extension of world from layer
     public static final int SPAWN_X = 100;
     public static final int SPAWN_Y = 100;
 
+    public static final int ENEMY_SPAWN_X1 = 250;
+    public static final int ENEMY_SPAWN_Y1 = 30;
+
+    public static final int ENEMY_SPAWN_X2 = 700;
+    public static final int ENEMY_SPAWN_Y2 = 30;
+
+    public static final int ENEMY_SPAWN_X3 = 250;
+    public static final int ENEMY_SPAWN_Y3 = 30;
+
     protected int spawnX = SPAWN_X, spawnY = SPAWN_Y;     //From the world.txt file
     protected int width = WORLD_WIDTH, height = WORLD_HEIGHT;
 
@@ -26,6 +37,13 @@ public class World{       //delete extension of world from layer
     protected Handler handler;
 
     public Layer solidLayer;
+
+    private long lastTime;
+    private double timer = 0;
+    private long currentTime;
+
+    private int enemies = 0;
+    private int maxEnemies = 5;
 
     //Entities
     private EntityManager entityManager;
@@ -45,7 +63,8 @@ public class World{       //delete extension of world from layer
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
         itemManager = new ItemManager(handler);
 
-        entityManager.addEntity(new Enemy(handler,500, 100));
+        entityManager.addEntity(new Skeleton(handler,500, 100));
+        entityManager.addEntity(new Orc(handler, 400, 300));
         entityManager.addEntity(new TestEntity(handler, 200, 200));
 
         loadWorld(path, 0);
@@ -67,9 +86,30 @@ public class World{       //delete extension of world from layer
 
     }
 
+    private void loadEnemies(){
+
+        currentTime = System.currentTimeMillis();
+        timer += currentTime - lastTime;
+        lastTime = currentTime;
+
+        if(timer > 3000){
+            if(enemies > maxEnemies)
+                return;
+            entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+            entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+            timer = 0;
+            enemies++;
+        }
+
+
+    }
+
     public void tick(){
+
+        //loadEnemies();
         entityManager.tick();
         itemManager.tick();
+
     }
 
     public void render(Graphics g){

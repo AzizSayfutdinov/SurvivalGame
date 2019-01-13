@@ -1,7 +1,10 @@
 package dev.Aziz.tilegame.entities;
 
 import dev.Aziz.tilegame.Handler;
+import dev.Aziz.tilegame.entities.creatures.Orc;
+import dev.Aziz.tilegame.entities.creatures.Skeleton;
 
+import javax.net.ssl.SSLKeyException;
 import java.awt.*;
 
 public abstract class Entity {
@@ -61,6 +64,10 @@ public abstract class Entity {
         if(health <= 0){
             setActive(false);     //removing from game
             die();
+            if(this instanceof Orc)
+                handler.getWorld().getEntityManager().getPlayer().setPoints(handler.getWorld().getEntityManager().getPlayer().getPoints() + 10);
+            if(this instanceof Skeleton)
+                handler.getWorld().getEntityManager().getPlayer().setPoints(handler.getWorld().getEntityManager().getPlayer().getPoints() + 4);
         }
     }
 
