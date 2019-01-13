@@ -5,9 +5,7 @@ import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.gfx.GameCamera;
 import dev.Aziz.tilegame.input.KeyManager;
 import dev.Aziz.tilegame.input.MouseManager;
-import dev.Aziz.tilegame.states.GameState;
-import dev.Aziz.tilegame.states.MenuState;
-import dev.Aziz.tilegame.states.State;
+import dev.Aziz.tilegame.states.*;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -19,6 +17,8 @@ public class Game implements Runnable{
     private int width, height;
     public String title;
     private boolean running = false;
+    private boolean newGame = false;
+
 
     private Thread thread;
 
@@ -28,6 +28,10 @@ public class Game implements Runnable{
     //States
     public State gameState;
     public State menuState;
+    public State optionState;
+    public State creditState;
+    public State exitState;
+    public State gameOverState;
 
     //Input
     private KeyManager keyManager;
@@ -40,6 +44,8 @@ public class Game implements Runnable{
 
 
     public Game(String title, int width, int height){
+
+
 
         this.width = width;
         this.height = height;
@@ -67,6 +73,10 @@ public class Game implements Runnable{
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
+        optionState = new OptionState(handler);
+        creditState = new CreditState(handler);
+        exitState = new ExitState(handler);
+        gameOverState = new GameOverState(handler);
         State.setState(menuState);
 
     }
@@ -185,6 +195,11 @@ public class Game implements Runnable{
         }
     }
 
+    public boolean isNewGame() {
+        return newGame;
+    }
 
-
+    public void setNewGame(boolean newGame) {
+        this.newGame = newGame;
+    }
 }
