@@ -5,6 +5,7 @@ import dev.Aziz.tilegame.entities.Entity;
 import dev.Aziz.tilegame.gfx.Animation;
 import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.inventory.Inventory;
+import dev.Aziz.tilegame.states.State;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -49,7 +50,7 @@ public class Player extends Creature {
         bounds.width = 64 / 2;
         bounds.height = 98 / 2;
 
-        health = 1000;
+        health = 100;
 
         lastAttackTimer = System.currentTimeMillis();
 
@@ -190,6 +191,17 @@ public class Player extends Creature {
         g.drawImage(getCurrentAnimationFramePants(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
 
+        g.setColor(Color.BLACK);
+        g.drawRect(handler.getGame().getWidth() - 110, 20, 100, 15);
+
+        if(health > 70)
+            g.setColor(Color.GREEN);
+        else if(health > 20)
+            g.setColor(Color.ORANGE);
+        else
+            g.setColor(Color.RED);
+        g.fillRect(handler.getGame().getWidth() - 110, 20,  health, 15);
+
     }
 
     public void postRender(Graphics g){
@@ -201,6 +213,7 @@ public class Player extends Creature {
         System.out.println("Player died!");
         if(health <= 0){
             setActive(false);
+            State.setState(handler.getGame().gameOverState);
 
             //animation
             //change state -> GameOverState

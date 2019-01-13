@@ -11,7 +11,7 @@ public class Launcher {
         //System.out.println( "-----------------------------------------------------------------------------");
         //System.out.println(Utils.loadXMLFileAsString("res/map/Map4/map4.xml", 1));
 
-        Game game =  new Game("Game", 900, 500);
+        Game game =  new Game("Game", 1200, 700);
         game.start();
 
 

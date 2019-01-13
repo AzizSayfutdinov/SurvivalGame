@@ -11,6 +11,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     private boolean leftPressed, rightPressed;
     private int mouseX, mouseY;
     private UIManager uiManager;
+    private boolean stateActive = true;
 
     public MouseManager(){
 
@@ -18,6 +19,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     public void setUiManager(UIManager uiManager){
         this.uiManager = uiManager;
+    }
+
+    public UIManager getUiManager() {
+        return uiManager;
     }
 
     //Helper Methods
@@ -37,6 +42,14 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         return mouseY;
     }
 
+    public boolean isStateActive() {
+        return stateActive;
+    }
+
+    public void setStateActive(boolean stateActiive) {
+        this.stateActive = stateActiive;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -44,24 +57,31 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){        //BUTTON1 = left button
-            leftPressed = true;
-        } else if(e.getButton() == MouseEvent.BUTTON3){        //BUTTON3 = right button
-            rightPressed = true;
+
+        if(stateActive) {
+
+            if (e.getButton() == MouseEvent.BUTTON1) {        //BUTTON1 = left button
+                leftPressed = true;
+            } else if (e.getButton() == MouseEvent.BUTTON3) {        //BUTTON3 = right button
+                rightPressed = true;
+            }
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
 
-        if(e.getButton() == MouseEvent.BUTTON1){        //BUTTON1 = left button
-            leftPressed = false;
-        } else if(e.getButton() == MouseEvent.BUTTON3){        //BUTTON3 = right button
-            rightPressed = false;
-        }
+        if(stateActive) {
 
-        if(uiManager != null){
-            uiManager.onMouseRelease(e);
+            if (e.getButton() == MouseEvent.BUTTON1) {        //BUTTON1 = left button
+                leftPressed = false;
+            } else if (e.getButton() == MouseEvent.BUTTON3) {        //BUTTON3 = right button
+                rightPressed = false;
+            }
+
+            if (uiManager != null) {
+                uiManager.onMouseRelease(e);
+            }
         }
 
     }

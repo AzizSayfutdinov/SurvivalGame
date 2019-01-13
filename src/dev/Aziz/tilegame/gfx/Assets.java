@@ -20,6 +20,9 @@ public class Assets {
     public static BufferedImage[] player_sword_down, player_sword_up, player_sword_right, player_sword_left;
     public static BufferedImage[] enemy_down, enemy_up, enemy_left, enemy_right;
     public static BufferedImage[] btn_start;
+    public static BufferedImage[] btn_options;
+    public static BufferedImage[] btn_credits;
+    public static BufferedImage[] btn_exit;
 
     public static BufferedImage[] worldTiles;
 
@@ -27,10 +30,13 @@ public class Assets {
     private static SpriteSheet playerPantsSheet;
     private static SpriteSheet playerSwordSheet;
     private static SpriteSheet playerAttackSheet;
+    private static SpriteSheet playerSwordAttackSheet;
     private static SpriteSheet sheet;
     private static SpriteSheet sheet3;
     private static SpriteSheet enemySheet;
     private static SpriteSheet worldSheet;
+    private static SpriteSheet menuSheet1;
+    private static SpriteSheet menuSheet2;
 
     public static void init(){
 
@@ -38,10 +44,15 @@ public class Assets {
 
         sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
         sheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/sheet3.png"));
+
+        menuSheet1 = new SpriteSheet(ImageLoader.loadImage("/textures/GUI1.png"));
+        menuSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/GUI2.png"));
+
         playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_Male.png"));
         playerPantsSheet = new SpriteSheet(ImageLoader.loadImage("/textures/LEGS_pants_greenish.png"));
         playerSwordSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WEAPON_dagger.png"));
         playerAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_attacking.png"));
+        playerSwordAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sword.png"));
         enemySheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_skeleton.png"));
 
         worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Overworld.png"));
@@ -75,9 +86,21 @@ public class Assets {
         player_sword_left = new BufferedImage[6];
 
         btn_start = new BufferedImage[2];
+        btn_options = new BufferedImage[2];
+        btn_credits = new BufferedImage[2];
+        btn_exit = new BufferedImage[2];
 
-        btn_start[0] = sheet3.crop(width * 6, height * 4, width * 2, height);
-        btn_start[1] = sheet3.crop(width * 6, height * 5, width * 2, height);
+        btn_start[0] = menuSheet1.crop(454, 194, 462, 88);
+        btn_start[1] = menuSheet2.crop(454, 194, 462, 88);
+
+        btn_options[0] = menuSheet1.crop(454, 194 + 88, 462, 88);
+        btn_options[1] = menuSheet2.crop(454, 194 + 88, 462, 88);
+
+        btn_credits[0] = menuSheet1.crop(454, 194 + 88 * 2, 462, 88);
+        btn_credits[1] = menuSheet2.crop(454, 194 + 88 * 2, 462, 88);
+
+        btn_exit[0] = menuSheet1.crop(454, 194 + 88 * 3, 462, 88);
+        btn_exit[1] = menuSheet2.crop(454, 194 + 88 * 3, 462, 88);
 
         worldTiles = new BufferedImage[1440];
 
@@ -85,7 +108,9 @@ public class Assets {
         //Player - Body
 
         loadPlayer();
-        loadPlayerAttacking();
+        loadPlayerAttackingDagger();
+        //loadPlayerAttackingSword();
+
         loadPlayerPants();
         loadPlayerSword();
 
@@ -183,7 +208,7 @@ public class Assets {
         }
     }
 
-    private static void loadPlayerAttacking(){
+    private static void loadPlayerAttackingDagger(){
 
         for(int i = 0; i < 6; i++) {
             if(i == 0)
@@ -211,6 +236,37 @@ public class Assets {
                 player_right_attacking[i] = playerAttackSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
                 player_right_attacking[i] = playerAttackSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+    }
+
+    private static void loadPlayerAttackingSword(){     //TODO: Finish loading animation
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                player_up_attacking[i] = playerSwordAttackSheet.crop(0, 0, enemyWidth * 3, enemyHeight * 3);
+            else
+                player_up_attacking[i] = playerSwordAttackSheet.crop(i * 64*3 - 1, 0, enemyWidth * 3, enemyHeight * 3);
+        }
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                player_left_attacking[i] = playerSwordAttackSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth * 3, enemyHeight * 3);
+            else
+                player_left_attacking[i] = playerSwordAttackSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth * 3, enemyHeight * 3);
+        }
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                player_down_attacking[i] = playerSwordAttackSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth * 3, enemyHeight * 3);
+            else
+                player_down_attacking[i] = playerSwordAttackSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth * 3, enemyHeight * 3);
+        }
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                player_right_attacking[i] = playerSwordAttackSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth * 3, enemyHeight * 3);
+            else
+                player_right_attacking[i] = playerSwordAttackSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth * 3, enemyHeight * 3);
         }
     }
 

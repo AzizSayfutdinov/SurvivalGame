@@ -78,5 +78,11 @@ public class Layer {
         this.handler = handler;
     }
 
+    public TileManager getTileManager() {
+        return tileManager;
+    }
 
+    public void setTileManager(TileManager tileManager) {
+        this.tileManager = tileManager;
+    }
 }

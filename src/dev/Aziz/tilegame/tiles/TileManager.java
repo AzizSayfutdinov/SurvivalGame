@@ -43,10 +43,9 @@ public class TileManager {
 
         createSolidTiles();
 
-
-        for (Integer id : list) {
-            for(int i = 0; i < TileManager.WORLD_TILES; i++) {
-                if (tiles.get(i).getId() == id) {
+        for(int i = 0; i < TileManager.WORLD_TILES; i++) {
+            for (Integer id : list) {
+                if (tiles.get(i).getId() == id){
                     tiles.get(i).setSolid(true);
                 }
             }
@@ -62,11 +61,25 @@ public class TileManager {
                 if(solidLayer.getSolidTilesID(i, j, -1) < 1){
                     continue;
                 } else {
-                    addSolidTile(solidLayer.getSolidTilesID(i, j,-1));
+                    addSolidTile(solidLayer.getSolidTilesID(i, j,0));
                 }
             }
         }
 
+        //addSolidTile(7);
+        //addSolidTile(8);
+        //addSolidTile(9);
+        //addSolidTile(10);
+        //addSolidTile(11);
+        //addSolidTile(47);
+        //addSolidTile(48);
+        //addSolidTile(49);
+        //addSolidTile(50);
+        //addSolidTile(51);
+        //addSolidTile(7);
+        //addSolidTile(7);
+        //addSolidTile(7);
+        //addSolidTile(7);
         //addSolidTile(486);
         //addSolidTile(405);
         //addSolidTile(407);
