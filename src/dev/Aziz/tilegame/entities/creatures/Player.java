@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Creature {
 
+    //AttackBounds
+
     //Animation
     //Body
     private Animation animDown;
@@ -35,7 +37,7 @@ public class Player extends Creature {
     private Animation animAttackLeft;
 
 
-
+    private int points = 0;
 
     //Attack timer
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
@@ -50,7 +52,7 @@ public class Player extends Creature {
         bounds.width = 64 / 2;
         bounds.height = 98 / 2;
 
-        health = 100;
+        health = 10;
 
         lastAttackTimer = System.currentTimeMillis();
 
@@ -155,7 +157,7 @@ public class Player extends Creature {
             if(e.equals(this))
                 continue;
             if(e.getCollisionBounds(0,0).intersects(ar)){
-                e.hurt(1);
+                e.hurt(5);      // amt = amount of damage
                 return;
             }
         }
@@ -186,11 +188,13 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
+        g.setColor(Color.BLUE);
         g.drawImage(getCurrentAnimationFrameBody(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawImage(getCurrentAnimationFrameSword(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawImage(getCurrentAnimationFramePants(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
 
+        // Health
         g.setColor(Color.BLACK);
         g.drawRect(handler.getGame().getWidth() - 110, 20, 100, 15);
 
@@ -210,15 +214,15 @@ public class Player extends Creature {
 
     @Override
     public void die() {
-        System.out.println("Player died!");
+
         if(health <= 0){
             setActive(false);
+
             State.setState(handler.getGame().gameOverState);
 
             //animation
             //change state -> GameOverState
         }
-        System.out.println("Health: " + health);
 
     }
 
@@ -297,5 +301,11 @@ public class Player extends Creature {
         this.inventory = inventory;
     }
 
+    public int getPoints() {
+        return points;
+    }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
 }

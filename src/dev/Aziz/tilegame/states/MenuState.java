@@ -32,8 +32,7 @@ public class MenuState extends State {
                 if(handler.getGame().isNewGame()){
                     Player p = new Player(handler, 300, 300);
                     handler.getWorld().getEntityManager().setPlayer(p);
-                    handler.getWorld().getEntityManager().addEntity(new Player(handler, 300, 300));
-                    handler.getWorld().getEntityManager().getPlayer().setHealth(100);
+                    handler.getWorld().getEntityManager().addEntity(p);
                 }
                 State.setState(handler.getGame().gameState);
             }
