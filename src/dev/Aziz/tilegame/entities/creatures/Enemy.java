@@ -1,30 +1,23 @@
 package dev.Aziz.tilegame.entities.creatures;
 
 import dev.Aziz.tilegame.Handler;
-import dev.Aziz.tilegame.gfx.Animation;
-import dev.Aziz.tilegame.gfx.Assets;
-import javafx.scene.shape.Circle;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+
 
 public class Enemy extends Creature {
 
-    //Animation
-    private Animation animDown;
-    private Animation animUp;
-    private Animation animRight;
-    private Animation animLeft;
+    protected Rectangle attackBounds;
 
-    private Rectangle attackBounds;
-
-    private Rectangle playerBound;
+    protected Rectangle playerBound;
 
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
 
-    private boolean moveUp = false, moveDown = false, moveRight = false, moveLeft = false;
+    protected int enemyAnimSpeed = 100;
 
-    private int speed = 4;
+    protected boolean moveUp = false, moveDown = false, moveRight = false, moveLeft = false;
+
+    protected int speed = 4;
 
 
 
@@ -45,13 +38,6 @@ public class Enemy extends Creature {
         attackBounds.y = 5;
         attackBounds.width = width;
         attackBounds.height = height;
-
-        int enemyAnimSpeed = 100;
-
-        animDown = new Animation(enemyAnimSpeed, Assets.enemy_down);
-        animUp = new Animation(enemyAnimSpeed, Assets.enemy_up);
-        animRight = new Animation(enemyAnimSpeed, Assets.enemy_right);
-        animLeft = new Animation(enemyAnimSpeed, Assets.enemy_left);
 
         yMove = speed;
         xMove = speed;
@@ -204,22 +190,12 @@ public class Enemy extends Creature {
         die();
         move();
         attack();
-        animDown.tick();
-        animUp.tick();
-        animRight.tick();
-        animLeft.tick();
 
     }
 
     @Override
     public void render(Graphics g) {
 
-        g.drawImage(getCurrentAnimationFrame(), (int)(x - handler.getGameCamera().getxOffset()),(int)(y - handler.getGameCamera().getyOffset()),width, height, null);
-        g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
-        g.setColor(Color.YELLOW);
-        g.drawRect((int)((x - handler.getGameCamera().getxOffset()) + playerBound.x),(int)(y - handler.getGameCamera().getyOffset()) + playerBound.y, playerBound.width, playerBound.height);
-        g.setColor(Color.RED);
-        g.drawRect((int)((x - handler.getGameCamera().getxOffset()) + attackBounds.x),(int)(y - handler.getGameCamera().getyOffset()) + attackBounds.y, attackBounds.width, attackBounds.height);
 
     }
 
@@ -229,28 +205,6 @@ public class Enemy extends Creature {
         //never
     }
 
-    private BufferedImage getCurrentAnimationFrame(){
-
-        if(moveRight){
-            return animRight.getCurrentFrame();
-        }
-
-        if(moveUp){
-            return animUp.getCurrentFrame();
-        }
-
-        if(moveLeft){
-            return animLeft.getCurrentFrame();
-        }
-
-        if(moveDown){
-            return animDown.getCurrentFrame();
-        }
-
-        return animDown.getFrameAtIndex(1);
-
-
-    }
 
 
     public Rectangle getAttackBounds() {

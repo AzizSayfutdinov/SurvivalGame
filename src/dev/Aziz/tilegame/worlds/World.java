@@ -3,7 +3,9 @@ package dev.Aziz.tilegame.worlds;
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.EntityManager;
 import dev.Aziz.tilegame.entities.creatures.Enemy;
+import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
+import dev.Aziz.tilegame.entities.creatures.Skeleton;
 import dev.Aziz.tilegame.entities.statics.TestEntity;
 import dev.Aziz.tilegame.items.ItemManager;
 import dev.Aziz.tilegame.tiles.TileManager;
@@ -45,7 +47,8 @@ public class World{       //delete extension of world from layer
         entityManager = new EntityManager(handler, new Player(handler, 0, 0));
         itemManager = new ItemManager(handler);
 
-        entityManager.addEntity(new Enemy(handler,500, 100));
+        entityManager.addEntity(new Skeleton(handler,500, 100));
+        entityManager.addEntity(new Orc(handler, 400, 300));
         entityManager.addEntity(new TestEntity(handler, 200, 200));
 
         loadWorld(path, 0);
