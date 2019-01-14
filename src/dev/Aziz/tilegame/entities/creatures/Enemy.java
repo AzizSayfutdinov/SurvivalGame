@@ -26,6 +26,7 @@ public class Enemy extends Creature {
     protected int enemyAnimSpeed = 100;
 
     protected boolean moveUp = false, moveDown = false, moveRight = false, moveLeft = false;
+    protected boolean attacking = false;
 
     protected int speed = 4;
 
@@ -178,9 +179,15 @@ public class Enemy extends Creature {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
         lastAttackTimer = System.currentTimeMillis();
 
-        if(attackTimer < attackCooldown)
-            return;
+        // used for proper animation
+        if(attackBounds.intersects(playerBound)){
+            attacking = true;
+        } else
+            attacking = false;
 
+        if( attackTimer < attackCooldown){
+            return;
+        }
 
         if(attackBounds.intersects(playerBound)){
             handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() - 1);

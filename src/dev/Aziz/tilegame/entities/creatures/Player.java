@@ -20,7 +20,7 @@ public class Player extends Creature {
     private Animation animUp;
     private Animation animRight;
     private Animation animLeft;
-    //Pants
+    //Pants TODO: delete pants and sword and use a different png instead
     private Animation animPantsDown;
     private Animation animPantsUp;
     private Animation animPantsRight;
@@ -52,7 +52,7 @@ public class Player extends Creature {
         bounds.width = 64 / 2;
         bounds.height = 98 / 2;
 
-        health = 10;
+        health = 100;
 
         lastAttackTimer = System.currentTimeMillis();
 
