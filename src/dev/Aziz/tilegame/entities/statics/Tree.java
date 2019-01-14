@@ -9,14 +9,17 @@ import java.awt.*;
 
 public class Tree extends StaticEntity {
 
+    int treeNr;
 
-    public Tree(Handler handler, float x, float y) {
-        super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT  * 2);
+    public Tree(Handler handler, float x, float y, int treeNr) {
 
-        bounds.x = 10;
-        bounds.y = (int)(height / 1.5f);
-        bounds.width = width - 20;
-        bounds.height = (int) (height - height / 1.5f);
+        super(handler, x, y, 4 * Tile.TILEWIDTH, 4 * Tile.TILEHEIGHT );
+
+        this.treeNr = treeNr;
+        bounds.x = 55;
+        bounds.y = 75;
+        bounds.width = width - 100;
+        bounds.height = height - 90;
     }
 
     @Override
@@ -26,8 +29,12 @@ public class Tree extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.tree, (int)(x - handler.getGameCamera().getxOffset()),(int)(y - handler.getGameCamera().getyOffset()), width, height, null);
-
+        if(treeNr == 1)
+            g.drawImage(Assets.tree1, (int)(x - handler.getGameCamera().getxOffset()),(int)(y - handler.getGameCamera().getyOffset()), width, height, null);
+        else
+            g.drawImage(Assets.tree2, (int)(x - handler.getGameCamera().getxOffset()),(int)(y - handler.getGameCamera().getyOffset()), width, height, null);
+        // bounds
+        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
     }
 
     @Override

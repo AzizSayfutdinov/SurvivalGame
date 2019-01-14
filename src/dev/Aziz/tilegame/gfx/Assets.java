@@ -12,7 +12,8 @@ public class Assets {
 
     public static Font font28;  //size = 28;
 
-    public static BufferedImage dirt, grass, stone, tree, rock, wood;
+    public static BufferedImage dirt, grass, stone, tree1, tree2, rock, wood;
+    public static BufferedImage house;
     public static BufferedImage inventoryScreen;
     public static BufferedImage[] player_down, player_up, player_right, player_left;
     public static BufferedImage[] player_down_attacking, player_up_attacking, player_right_attacking, player_left_attacking;
@@ -37,6 +38,7 @@ public class Assets {
     private static SpriteSheet skeletonSheet;
     private static SpriteSheet orcSheet;
     private static SpriteSheet worldSheet;
+    private static SpriteSheet treeSheeet;
     private static SpriteSheet menuSheet1;
     private static SpriteSheet menuSheet2;
 
@@ -57,6 +59,8 @@ public class Assets {
         orcSheet = new SpriteSheet(ImageLoader.loadImage("/textures/orc.png"));
 
         worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Overworld.png"));
+
+        treeSheeet = new SpriteSheet(ImageLoader.loadImage("/textures/trees-green.png"));
 
         inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 
@@ -143,9 +147,12 @@ public class Assets {
         grass = sheet.crop(width, 0, width, height);
         dirt = sheet.crop(2 * width, 0, width, height);
         stone = sheet.crop(3 * width, 0, width, height);
-        tree = sheet.crop(0, height, width, height);
         rock = sheet3.crop(0,2 * width, width, height);
         wood = sheet3.crop(width,height, width, height);
+
+        house = worldSheet.crop(6 * worldTileWidth , 0, 5 * worldTileWidth, 5 * worldTileHeight);
+        tree1 = treeSheeet.crop(296, 512, 180, 195);
+        tree2 = treeSheeet.crop(671, 512, 163, 195);
 
 
     }
@@ -162,15 +169,15 @@ public class Assets {
                             worldTiles[i] = worldSheet.crop(x * worldTileWidth, y * worldTileHeight, worldTileWidth, worldTileHeight);
                             i++;
                         } else {
-                            worldTiles[i] = worldSheet.crop(x * worldTileWidth - 1, y * worldTileHeight, worldTileWidth, worldTileHeight);
+                            worldTiles[i] = worldSheet.crop(x * worldTileWidth, y * worldTileHeight, worldTileWidth, worldTileHeight);
                             i++;
                         }
                     } else {
                         if(x == 0){
-                            worldTiles[i] = worldSheet.crop(x * worldTileWidth, y * worldTileHeight - 1, worldTileWidth, worldTileHeight);
+                            worldTiles[i] = worldSheet.crop(x * worldTileWidth, y * worldTileHeight, worldTileWidth, worldTileHeight);
                             i++;
                         } else {
-                            worldTiles[i] = worldSheet.crop(x * worldTileWidth - 1, y * worldTileHeight - 1, worldTileWidth, worldTileHeight);
+                            worldTiles[i] = worldSheet.crop(x * worldTileWidth, y * worldTileHeight, worldTileWidth, worldTileHeight);
                             i++;
                         }
                     }

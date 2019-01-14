@@ -6,7 +6,9 @@ import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
+import dev.Aziz.tilegame.entities.statics.House;
 import dev.Aziz.tilegame.entities.statics.TestEntity;
+import dev.Aziz.tilegame.entities.statics.Tree;
 import dev.Aziz.tilegame.items.ItemManager;
 import dev.Aziz.tilegame.tiles.TileManager;
 import dev.Aziz.tilegame.utils.Utils;
@@ -64,8 +66,12 @@ public class World{       //delete extension of world from layer
         itemManager = new ItemManager(handler);
 
         entityManager.addEntity(new Skeleton(handler,500, 100));
-        entityManager.addEntity(new Orc(handler, 400, 300));
+        entityManager.addEntity(new Orc(handler, 500, 300));
         entityManager.addEntity(new TestEntity(handler, 200, 200));
+        entityManager.addEntity(new House(handler, 223, 1130));
+        entityManager.addEntity(new House(handler, 223 + 385, 1130));
+        entityManager.addEntity(new Tree(handler, 400, 400, 1));
+        entityManager.addEntity(new Tree(handler, 400, 600, 2));
 
         loadWorld(path, 0);
 
@@ -80,7 +86,7 @@ public class World{       //delete extension of world from layer
 
         solidLayer = new Layer(handler);
         solidLayer.init();
-        solidLayer.loadLayer("res/map/Map5/map5.xml", 2);
+        solidLayer.loadLayer("res/map/Map6/map6.xml", 1);
         tileManager = new TileManager(handler);
         tileManager.solidifyTiles(tileManager.getSolidTiles());
 

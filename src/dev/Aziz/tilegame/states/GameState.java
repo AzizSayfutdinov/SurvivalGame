@@ -17,7 +17,7 @@ public class GameState extends State {
 
     public GameState(Handler handler){
         super(handler);
-        this.world = new World(handler, "res/map/Map5/map5.xml");
+        this.world = new World(handler, "res/map/Map6/map6.xml");
         handler.setWorld(world);
         world.loadSolidLayer();
 
