@@ -28,11 +28,11 @@ public class Rock extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.rock, (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), Tile.TILEWIDTH,Tile.TILEHEIGHT, null);
+        //g.drawImage(Assets.rock, (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), Tile.TILEWIDTH,Tile.TILEHEIGHT, null);
     }
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x ,(int) y));
+        //handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x ,(int) y));
     }
 }

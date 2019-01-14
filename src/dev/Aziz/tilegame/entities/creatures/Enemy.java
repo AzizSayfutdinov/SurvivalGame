@@ -1,14 +1,5 @@
 package dev.Aziz.tilegame.entities.creatures;
 
-/*
-
- *@startuml
- * car--|> wheel
- * @enduml
-
- */
-
-
 import dev.Aziz.tilegame.Handler;
 
 import java.awt.*;
@@ -28,7 +19,7 @@ public class Enemy extends Creature {
     protected boolean moveUp = false, moveDown = false, moveRight = false, moveLeft = false;
     protected boolean attacking = false;
 
-    protected int speed = 4;
+    protected int speed = 0;
 
 
 
@@ -199,8 +190,6 @@ public class Enemy extends Creature {
     }
 
 
-
-
     @Override
     public void tick() {
 
@@ -213,13 +202,12 @@ public class Enemy extends Creature {
     @Override
     public void render(Graphics g) {
 
-
     }
 
 
     @Override
     public void die() {
-        //never
+
     }
 
 

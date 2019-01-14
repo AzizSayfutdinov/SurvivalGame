@@ -1,6 +1,5 @@
 package dev.Aziz.tilegame.states;
 
-import dev.Aziz.tilegame.Game;
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.gfx.Assets;
@@ -8,7 +7,7 @@ import dev.Aziz.tilegame.gfx.Text;
 import dev.Aziz.tilegame.ui.ClickListener;
 import dev.Aziz.tilegame.ui.UIImageButton;
 import dev.Aziz.tilegame.ui.UIManager;
-import sun.misc.ASCIICaseInsensitiveComparator;
+import dev.Aziz.tilegame.worlds.World;
 
 import java.awt.*;
 
@@ -30,9 +29,7 @@ public class MenuState extends State {
             public void onClick() {
                 handler.getMouseManager().setStateActive(false);
                 if(handler.getGame().isNewGame()){
-                    Player p = new Player(handler, 300, 300);
-                    handler.getWorld().getEntityManager().setPlayer(p);
-                    handler.getWorld().getEntityManager().addEntity(p);
+                    recreateWorld();
                 }
                 State.setState(handler.getGame().gameState);
             }
@@ -77,7 +74,11 @@ public class MenuState extends State {
     @Override
     public void render(Graphics g) {
         g.fillRect(0,0,handler.getGame().getWidth(), handler.getGame().getHeight());
-        Text.drawString(g, "WELCOME TO THE SURVIVAL-GAME!", 50, 50, false, Color.WHITE, Assets.font28);
+        Text.drawString(g, "WELCOME TO THE SURVIVAL-GAME!", 50, 50, false, Color.WHITE, Assets.font50);
+        Text.drawString(g, "Use the W,A,S,D keys to move!", 50, 100, false, Color.RED, Assets.font28);
+        Text.drawString(g, "Use arrow keys to attack!", 50, 130, false, Color.RED, Assets.font28);
+        Text.drawString(g, "Good luck!", 50, 160, false, Color.RED, Assets.font28);
+
         uiManager.render(g);
 
     }
@@ -85,6 +86,17 @@ public class MenuState extends State {
 
     public UIManager getUiManager() {
         return uiManager;
+    }
+
+    private void recreateWorld(){
+
+        Player p = new Player(handler, World.SPAWN_X, World.SPAWN_Y);
+        handler.getWorld().getEntityManager().setPlayer(p);
+        handler.getWorld().getEntityManager().getEntities().removeAll(handler.getWorld().getEntityManager().getEntities());
+        handler.getWorld().setEnemyWaves(0);
+        handler.getWorld().getEntityManager().addEntity(p);
+        handler.getWorld().init();
+
     }
 
 }

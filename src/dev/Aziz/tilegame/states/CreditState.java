@@ -20,7 +20,14 @@ public class CreditState extends State {
     @Override
     public void render(Graphics g) {
         g.fillRect(0,0,handler.getGame().getWidth(), handler.getGame().getHeight());
-        Text.drawString(g, "ALL CREDITS TO AZIZ SAYFUTDINOV", 50, 50, false, Color.WHITE, Assets.font28);
+        Text.drawString(g, "CREDITS", handler.getGame().getWidth() / 2, 50, true, Color.YELLOW, Assets.font50);
+
+        Text.drawString(g, "Programmer", handler.getGame().getWidth() / 2, 150, true, Color.GREEN, Assets.font22);
+        Text.drawString(g, "Aziz Sayfutdinov", handler.getGame().getWidth() / 2, 200, true, Color.WHITE, Assets.font22);
+        Text.drawString(g, "Game Art", handler.getGame().getWidth() / 2, 300, true, Color.GREEN, Assets.font22);
+        Text.drawString(g, "Aziz Sayfutdinov", handler.getGame().getWidth() / 2, 350, true, Color.WHITE, Assets.font22);
+        Text.drawString(g, "Sound", handler.getGame().getWidth() / 2, 450, true, Color.GREEN, Assets.font22);
+        Text.drawString(g, "Aziz Sayfutdinov", handler.getGame().getWidth() / 2, 500, true, Color.WHITE, Assets.font22);
     }
 
 

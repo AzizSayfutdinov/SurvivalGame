@@ -5,6 +5,7 @@ import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.gfx.GameCamera;
 import dev.Aziz.tilegame.input.KeyManager;
 import dev.Aziz.tilegame.input.MouseManager;
+import dev.Aziz.tilegame.sounds.Sound;
 import dev.Aziz.tilegame.states.*;
 
 import java.awt.*;
@@ -21,6 +22,7 @@ public class Game implements Runnable{
 
 
     private Thread thread;
+    private Thread soundThread;
 
     private BufferStrategy bs;
     private Graphics g;
@@ -32,6 +34,7 @@ public class Game implements Runnable{
     public State creditState;
     public State exitState;
     public State gameOverState;
+    public State gameWonState;
 
     //Input
     private KeyManager keyManager;
@@ -41,6 +44,8 @@ public class Game implements Runnable{
     private GameCamera gameCamera;
 
     private  Handler handler;
+
+    private Sound backgroundMusic;
 
 
     public Game(String title, int width, int height){
@@ -77,7 +82,10 @@ public class Game implements Runnable{
         creditState = new CreditState(handler);
         exitState = new ExitState(handler);
         gameOverState = new GameOverState(handler);
+        gameWonState = new GameWonState(handler);
         State.setState(menuState);
+
+        backgroundMusic = new Sound(Assets.backGroundMusic);
 
     }
 
@@ -123,6 +131,9 @@ public class Game implements Runnable{
         long lastTime = System.nanoTime();
         long timer = 0;
         int ticks = 0;
+
+        soundThread = new Thread(backgroundMusic);
+        soundThread.start();
 
         //game loop: picture of game loop
         while(running){
@@ -182,6 +193,8 @@ public class Game implements Runnable{
         running = true;
         thread = new Thread(this);
         thread.start(); // calls run-method
+
+
     }
 
     public synchronized void stop(){

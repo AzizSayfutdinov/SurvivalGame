@@ -24,7 +24,7 @@ public class GameCamera {
         else if(xOffset > (handler.getWorld().getWidth() * Tile.TILEWIDTH - handler.getWidth())){
             xOffset = handler.getWorld().getWidth() * Tile.TILEWIDTH - handler.getWidth();
         }
-//
+
         if(yOffset < 0){
             yOffset = 0;
         }

@@ -4,7 +4,6 @@ import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
 
-import javax.net.ssl.SSLKeyException;
 import java.awt.*;
 
 public abstract class Entity {

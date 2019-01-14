@@ -1,36 +1,39 @@
 package dev.Aziz.tilegame.worlds;
 
 import dev.Aziz.tilegame.Handler;
+import dev.Aziz.tilegame.entities.Entity;
 import dev.Aziz.tilegame.entities.EntityManager;
 import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
-import dev.Aziz.tilegame.entities.statics.TestEntity;
+import dev.Aziz.tilegame.entities.statics.House;
+import dev.Aziz.tilegame.entities.statics.Tree;
 import dev.Aziz.tilegame.items.ItemManager;
+import dev.Aziz.tilegame.states.State;
 import dev.Aziz.tilegame.tiles.TileManager;
 import dev.Aziz.tilegame.utils.Utils;
 
 import java.awt.*;
 
 
-public class World{       //delete extension of world from layer
+public class World{
 
     public static final int WORLD_WIDTH = 50;
     public static final int WORLD_HEIGHT = 50;
-    public static final int SPAWN_X = 100;
-    public static final int SPAWN_Y = 100;
+    public static final int SPAWN_X = 656;
+    public static final int SPAWN_Y = 1250;
 
-    public static final int ENEMY_SPAWN_X1 = 250;
+    public static final int ENEMY_SPAWN_X1 = 280;
     public static final int ENEMY_SPAWN_Y1 = 30;
 
-    public static final int ENEMY_SPAWN_X2 = 700;
+    public static final int ENEMY_SPAWN_X2 = 690;
     public static final int ENEMY_SPAWN_Y2 = 30;
 
-    public static final int ENEMY_SPAWN_X3 = 250;
+    public static final int ENEMY_SPAWN_X3 = 1300;
     public static final int ENEMY_SPAWN_Y3 = 30;
 
-    protected int spawnX = SPAWN_X, spawnY = SPAWN_Y;     //From the world.txt file
+    protected int spawnX = SPAWN_X, spawnY = SPAWN_Y;
     protected int width = WORLD_WIDTH, height = WORLD_HEIGHT;
 
     protected int[][] tilesID;
@@ -42,8 +45,8 @@ public class World{       //delete extension of world from layer
     private double timer = 0;
     private long currentTime;
 
-    private int enemies = 0;
-    private int maxEnemies = 5;
+    private int enemyWaves = 0;
+    private int maxEnemyWaves = 5;
 
     //Entities
     private EntityManager entityManager;
@@ -60,12 +63,17 @@ public class World{       //delete extension of world from layer
     public World(Handler handler, String path){
 
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 0, 0));
-        itemManager = new ItemManager(handler);
+        entityManager = new EntityManager(handler, new Player(handler, 1000, 1000));
 
-        entityManager.addEntity(new Skeleton(handler,500, 100));
-        entityManager.addEntity(new Orc(handler, 400, 300));
-        entityManager.addEntity(new TestEntity(handler, 200, 200));
+        init();
+
+        // DEBUG entities
+        //entityManager.addEntity(new Skeleton(handler,ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+        //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+        //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
+        //entityManager.addEntity(new Tree(handler, 400, 400, 1));
+        //entityManager.addEntity(new Tree(handler, 400, 600, 2));
+
 
         loadWorld(path, 0);
 
@@ -76,38 +84,11 @@ public class World{       //delete extension of world from layer
     }
 
 
-    public void loadSolidLayer(){
-
-        solidLayer = new Layer(handler);
-        solidLayer.init();
-        solidLayer.loadLayer("res/map/Map5/map5.xml", 2);
-        tileManager = new TileManager(handler);
-        tileManager.solidifyTiles(tileManager.getSolidTiles());
-
-    }
-
-    private void loadEnemies(){
-
-        currentTime = System.currentTimeMillis();
-        timer += currentTime - lastTime;
-        lastTime = currentTime;
-
-        if(timer > 3000){
-            if(enemies > maxEnemies)
-                return;
-            entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
-            entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
-            timer = 0;
-            enemies++;
-        }
-
-
-    }
-
     public void tick(){
 
-        //loadEnemies();
+        loadEnemies();
         entityManager.tick();
+        //entityManager.getPlayer().postTick();     // used for shooting feature of player
         itemManager.tick();
 
     }
@@ -119,6 +100,101 @@ public class World{       //delete extension of world from layer
         entityManager.render(g);
 
     }
+
+    public void init(){
+        loadForest();
+        itemManager = new ItemManager(handler);
+
+        entityManager.addEntity(new House(handler, 223, 1130));
+        entityManager.addEntity(new House(handler, 223 + 385, 1130));
+
+
+    }
+
+    public void loadSolidLayer(){
+
+        solidLayer = new Layer(handler);
+        solidLayer.init();
+        solidLayer.loadLayer("res/map/Map6/map6.xml", 1);
+        tileManager = new TileManager(handler);
+        tileManager.solidifyTiles(tileManager.getSolidTiles());
+
+    }
+
+    public void loadForest(){
+
+        int rangeX = (7 - 1) + 1;
+        int rangeY = (6 - 1) + 1;
+
+
+        for(int i = 0; i < 50; i++){
+            int x = -80 + ((int)(Math.random() * rangeX) + 1) * (145 + ((int)(Math.random() * 10) - 10));
+            int y = ((int)(Math.random() * rangeY) + 1) * (170 + ((int)(Math.random() * 30) - 15));
+            int tree = (int)(Math.random() * 2) + 1;
+
+            entityManager.addEntity(new Tree(handler, x, y, tree));
+        }
+
+    }
+
+    private void loadEnemies(){
+
+        currentTime = System.currentTimeMillis();
+        timer += currentTime - lastTime;
+        lastTime = currentTime;
+        int waves = 0;
+
+        if(timer > 3000){
+            if(enemyWaves > maxEnemyWaves){
+                checkIfWon();
+                return;
+            }
+
+
+         switch (waves){
+             case 0:
+                 entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+                 entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+                 break;
+
+             case 1:
+                 entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+                 entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
+                 break;
+
+             case 2:
+                 entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
+                 entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+                 break;
+
+         }
+
+            waves++;
+
+            if(waves > 2)
+                waves = 0;
+
+            timer = 0;
+            enemyWaves++;
+        }
+    }
+
+    private void checkIfWon(){
+
+        int count = 0;
+
+        for(Entity e: handler.getWorld().getEntityManager().getEntities()){
+            if(e instanceof Enemy){
+                count++;
+            }
+        }
+
+        if(count < 1){
+            State.setState(handler.getGame().gameWonState);
+        }
+
+    }
+
 
 
     private void loadWorld(String path, int index){
@@ -185,5 +261,9 @@ public class World{       //delete extension of world from layer
 
     public void setSolidLayer(Layer solidLayer) {
         this.solidLayer = solidLayer;
+    }
+
+    public void setEnemyWaves(int enemyWaves) {
+        this.enemyWaves = enemyWaves;
     }
 }

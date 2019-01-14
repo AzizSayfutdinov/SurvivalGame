@@ -3,7 +3,6 @@ package dev.Aziz.tilegame;
 import dev.Aziz.tilegame.gfx.GameCamera;
 import dev.Aziz.tilegame.input.KeyManager;
 import dev.Aziz.tilegame.input.MouseManager;
-import dev.Aziz.tilegame.tiles.TileManager;
 import dev.Aziz.tilegame.worlds.World;
 
 public class Handler {
