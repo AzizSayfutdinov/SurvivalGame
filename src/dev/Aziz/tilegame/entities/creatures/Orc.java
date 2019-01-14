@@ -12,10 +12,16 @@ public class Orc extends Enemy {
     private static final int ORC_HEALTH = 20;
 
     //Animation
+    //Move
     private Animation animDown;
     private Animation animUp;
     private Animation animRight;
     private Animation animLeft;
+    //Attack
+    private Animation animAttackDown;
+    private Animation animAttackUp;
+    private Animation animAttackRight;
+    private Animation animAttackLeft;
 
     public Orc(Handler handler, float x, float y) {
         super(handler, x, y);
@@ -26,6 +32,11 @@ public class Orc extends Enemy {
         animUp = new Animation(enemyAnimSpeed, Assets.orc_up);
         animRight = new Animation(enemyAnimSpeed, Assets.orc_right);
         animLeft = new Animation(enemyAnimSpeed, Assets.orc_left);
+        animAttackDown = new Animation(enemyAnimSpeed, Assets.orc_down_attacking);
+        animAttackUp = new Animation(enemyAnimSpeed, Assets.orc_up_attacking);
+        animAttackRight = new Animation(enemyAnimSpeed, Assets.orc_right_attacking);
+        animAttackLeft = new Animation(enemyAnimSpeed, Assets.orc_left_attacking);
+
 
     }
 
@@ -37,6 +48,10 @@ public class Orc extends Enemy {
         animUp.tick();
         animRight.tick();
         animLeft.tick();
+        animAttackDown.tick();
+        animAttackUp.tick();
+        animAttackRight.tick();
+        animAttackLeft.tick();
 
     }
 
@@ -64,6 +79,22 @@ public class Orc extends Enemy {
     }
 
     private BufferedImage getCurrentAnimationFrame(){
+
+        if(moveRight && attacking){
+            return animAttackRight.getCurrentFrame();
+        }
+
+        if(moveUp && attacking){
+            return animAttackUp.getCurrentFrame();
+        }
+
+        if(moveLeft && attacking){
+            return animAttackLeft.getCurrentFrame();
+        }
+
+        if(moveDown && attacking){
+            return animAttackDown.getCurrentFrame();
+        }
 
         if(moveRight){
             return animRight.getCurrentFrame();

@@ -20,6 +20,7 @@ public class Assets {
     public static BufferedImage[] player_sword_down, player_sword_up, player_sword_right, player_sword_left;
     public static BufferedImage[] skeleton_down, skeleton_up, skeleton_left, skeleton_right;
     public static BufferedImage[] orc_down, orc_up, orc_left, orc_right;
+    public static BufferedImage[] orc_down_attacking, orc_up_attacking, orc_left_attacking, orc_right_attacking;
     public static BufferedImage[] btn_start;
     public static BufferedImage[] btn_options;
     public static BufferedImage[] btn_credits;
@@ -72,6 +73,11 @@ public class Assets {
         orc_down = new BufferedImage[9];
         orc_left = new BufferedImage[9];
         orc_right = new BufferedImage[9];
+
+        orc_up_attacking = new BufferedImage[8];
+        orc_down_attacking = new BufferedImage[8];
+        orc_left_attacking = new BufferedImage[8];
+        orc_right_attacking = new BufferedImage[8];
 
         player_down = new BufferedImage[9];
         player_up = new BufferedImage[9];
@@ -126,6 +132,7 @@ public class Assets {
 
         loadSkeleton();
         loadOrc();
+        loadOrcAttacking();
 
         // World Tiles
 
@@ -402,6 +409,40 @@ public class Assets {
                 orc_right[i] = orcSheet.crop(i * enemyWidth, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
                 orc_right[i] = orcSheet.crop(i * enemyWidth - 1, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+    }
+
+    //TODO: mention helper methods in the documentation
+
+    private static void loadOrcAttacking(){
+
+        for(int i = 0; i < 8; i++) {
+            if(i == 0)
+                orc_up_attacking[i] = orcSheet.crop(i * enemyWidth, 4 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_up_attacking[i] = orcSheet.crop(i * enemyWidth - 1, 4 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 8; i++) {
+            if(i == 0)
+                orc_left_attacking[i] = orcSheet.crop(i * enemyWidth, 5 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_left_attacking[i] = orcSheet.crop(i * enemyWidth - 1, 5 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 8; i++) {
+            if(i == 0)
+                orc_down_attacking[i] = orcSheet.crop(i * enemyWidth, 6 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_down_attacking[i] = orcSheet.crop(i * enemyWidth - 1, 6 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 8; i++) {
+            if(i == 0)
+                orc_right_attacking[i] = orcSheet.crop(i * enemyWidth, 7 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                orc_right_attacking[i] = orcSheet.crop(i * enemyWidth - 1, 7 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
     }
