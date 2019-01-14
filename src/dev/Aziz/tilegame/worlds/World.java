@@ -67,11 +67,13 @@ public class World{       //delete extension of world from layer
 
         entityManager.addEntity(new Skeleton(handler,500, 100));
         entityManager.addEntity(new Orc(handler, 500, 300));
-        entityManager.addEntity(new TestEntity(handler, 200, 200));
+
         entityManager.addEntity(new House(handler, 223, 1130));
         entityManager.addEntity(new House(handler, 223 + 385, 1130));
-        entityManager.addEntity(new Tree(handler, 400, 400, 1));
-        entityManager.addEntity(new Tree(handler, 400, 600, 2));
+
+        loadForest();
+        //entityManager.addEntity(new Tree(handler, 400, 400, 1));
+        //entityManager.addEntity(new Tree(handler, 400, 600, 2));
 
         loadWorld(path, 0);
 
@@ -92,6 +94,22 @@ public class World{       //delete extension of world from layer
 
     }
 
+    private void loadForest(){
+
+        int rangeX = (7 - 1) + 1;
+        int rangeY = (6 - 1) + 1;
+
+
+        for(int i = 0; i < 50; i++){
+            int x = -80 + ((int)(Math.random() * rangeX) + 1) * (145 + ((int)(Math.random() * 10) - 10));
+            int y = 50 + ((int)(Math.random() * rangeY) + 1) * (170 + ((int)(Math.random() * 10) - 10));
+            int tree = (int)(Math.random() * 2) + 1;
+
+            entityManager.addEntity(new Tree(handler, x, y, tree));
+        }
+
+    }
+
     private void loadEnemies(){
 
         currentTime = System.currentTimeMillis();
@@ -106,8 +124,6 @@ public class World{       //delete extension of world from layer
             timer = 0;
             enemies++;
         }
-
-
     }
 
     public void tick(){
