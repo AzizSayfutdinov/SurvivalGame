@@ -14,6 +14,7 @@ public class Assets {
     private static final int worldTileWidth = 16, worldTileHeight = 16;
 
     public static Clip testSound;
+    public static Clip backGroundMusic;
 
     public static Font font28;  //size = 28;
     public static Font font22;
@@ -52,6 +53,7 @@ public class Assets {
     public static void init(){
 
         testSound = SoundLoader.loadSound("/sounds/stepdirt_1.wav");
+        backGroundMusic = SoundLoader.loadSound("/sounds/Heroic Demise.wav");
 
         font50 = FontLoader.loadFont("res/fonts/slkscr.ttf", 50);
         font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);

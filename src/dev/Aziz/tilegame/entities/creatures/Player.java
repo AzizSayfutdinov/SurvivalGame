@@ -12,7 +12,7 @@ import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Player extends Creature {
+public class Player extends Creature implements Runnable{
 
     //AttackBounds
 
@@ -20,6 +20,7 @@ public class Player extends Creature {
     SoundLoader loader = new SoundLoader();
     Clip c;
 
+    private Thread playerThread;
 
     //Animation
     //Body
@@ -35,6 +36,8 @@ public class Player extends Creature {
     private Animation animAttackLeft;
 
     private Animation lastAnimation;
+
+
 
 
     private int points = 0;
@@ -77,6 +80,11 @@ public class Player extends Creature {
         //Inventory
         inventory = new Inventory(handler);
 
+        playerThread = new Thread(this);
+        playerThread.start();
+
+
+
     }
 
     @Override
@@ -96,7 +104,7 @@ public class Player extends Creature {
         //Movement
         getInput();
         move();
-        playWalkSound();
+
         //SoundLoader.playSound(Assets.testSound);
         handler.getGameCamera().centerOnEntity(this);
         //Attack
@@ -107,9 +115,14 @@ public class Player extends Creature {
     }
 
 
+    @Override
+    public void run() {
+
+    }
+
     private void playWalkSound(){
 
-        
+            SoundLoader.playSound(Assets.testSound);
 
     }
 
@@ -289,4 +302,5 @@ public class Player extends Creature {
     public void setPoints(int points) {
         this.points = points;
     }
+
 }
