@@ -1,11 +1,19 @@
 package dev.Aziz.tilegame.sounds;
 
-import dev.Aziz.tilegame.gfx.Assets;
+
+import javax.sound.sampled.Clip;
 
 public class Sound implements Runnable {
+
+    private Clip clip;
+
+    public Sound(Clip clip){
+        this.clip = clip;
+    }
+
     @Override
     public void run() {
 
-        SoundLoader.playSound(Assets.backGroundMusic);
+        SoundLoader.playSound(clip);
     }
 }

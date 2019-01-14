@@ -2,12 +2,10 @@ package dev.Aziz.tilegame.worlds;
 
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.EntityManager;
-import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
 import dev.Aziz.tilegame.entities.statics.House;
-import dev.Aziz.tilegame.entities.statics.TestEntity;
 import dev.Aziz.tilegame.entities.statics.Tree;
 import dev.Aziz.tilegame.items.ItemManager;
 import dev.Aziz.tilegame.tiles.TileManager;
@@ -16,7 +14,7 @@ import dev.Aziz.tilegame.utils.Utils;
 import java.awt.*;
 
 
-public class World{       //delete extension of world from layer
+public class World{
 
     public static final int WORLD_WIDTH = 50;
     public static final int WORLD_HEIGHT = 50;
@@ -32,7 +30,7 @@ public class World{       //delete extension of world from layer
     public static final int ENEMY_SPAWN_X3 = 1300;
     public static final int ENEMY_SPAWN_Y3 = 30;
 
-    protected int spawnX = SPAWN_X, spawnY = SPAWN_Y;     //From the world.txt file
+    protected int spawnX = SPAWN_X, spawnY = SPAWN_Y;
     protected int width = WORLD_WIDTH, height = WORLD_HEIGHT;
 
     protected int[][] tilesID;
@@ -66,14 +64,13 @@ public class World{       //delete extension of world from layer
 
         init();
 
-        // Debug entities
+        // DEBUG entities
         //entityManager.addEntity(new Skeleton(handler,ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
         //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
         //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
-
-
         //entityManager.addEntity(new Tree(handler, 400, 400, 1));
         //entityManager.addEntity(new Tree(handler, 400, 600, 2));
+
 
         loadWorld(path, 0);
 
@@ -88,7 +85,7 @@ public class World{       //delete extension of world from layer
 
         loadEnemies();
         entityManager.tick();
-        //entityManager.getPlayer().postTick();
+        //entityManager.getPlayer().postTick();     // used for shooting feature of player
         itemManager.tick();
 
     }
@@ -171,7 +168,6 @@ public class World{       //delete extension of world from layer
             if(waves > 2)
                 waves = 0;
 
-            //entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
             timer = 0;
             enemyWaves++;
         }

@@ -17,38 +17,6 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     }
 
-    public void setUiManager(UIManager uiManager){
-        this.uiManager = uiManager;
-    }
-
-    public UIManager getUiManager() {
-        return uiManager;
-    }
-
-    //Helper Methods
-    public boolean isLeftPressed(){
-        return leftPressed;
-    }
-
-    public boolean isRightPressed(){
-        return rightPressed;
-    }
-
-    public int getMouseX(){
-        return mouseX;
-    }
-
-    public int getMouseY(){
-        return mouseY;
-    }
-
-    public boolean isStateActive() {
-        return stateActive;
-    }
-
-    public void setStateActive(boolean stateActiive) {
-        this.stateActive = stateActiive;
-    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -109,5 +77,38 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         if(uiManager != null){
             uiManager.onMouseMove(e);
         }
+    }
+
+    public void setUiManager(UIManager uiManager){
+        this.uiManager = uiManager;
+    }
+
+    public UIManager getUiManager() {
+        return uiManager;
+    }
+
+    //Helper Methods
+    public boolean isLeftPressed(){
+        return leftPressed;
+    }
+
+    public boolean isRightPressed(){
+        return rightPressed;
+    }
+
+    public int getMouseX(){
+        return mouseX;
+    }
+
+    public int getMouseY(){
+        return mouseY;
+    }
+
+    public boolean isStateActive() {
+        return stateActive;
+    }
+
+    public void setStateActive(boolean stateActiive) {
+        this.stateActive = stateActiive;
     }
 }

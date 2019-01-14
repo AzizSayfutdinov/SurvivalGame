@@ -57,8 +57,6 @@ public class Game implements Runnable{
         keyManager = new KeyManager();
         mouseManager = new MouseManager();
 
-        backgroundMusic = new Sound();
-
     }
 
     private void init(){
@@ -84,6 +82,8 @@ public class Game implements Runnable{
         exitState = new ExitState(handler);
         gameOverState = new GameOverState(handler);
         State.setState(menuState);
+
+        backgroundMusic = new Sound(Assets.backGroundMusic);
 
     }
 

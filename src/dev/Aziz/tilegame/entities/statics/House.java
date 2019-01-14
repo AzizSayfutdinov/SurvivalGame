@@ -15,7 +15,7 @@ public class House extends StaticEntity {
         bounds.y = 60;
         bounds.width = width - 20;
         bounds.height = height - 100;
-//
+
 
     }
 

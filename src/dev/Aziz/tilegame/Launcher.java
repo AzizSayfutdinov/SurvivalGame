@@ -7,8 +7,6 @@ public class Launcher {
         Game game =  new Game("Game", 1200, 700);
         game.start();
 
-
-
     }
 
 }

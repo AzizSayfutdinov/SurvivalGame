@@ -190,8 +190,6 @@ public class Enemy extends Creature {
     }
 
 
-
-
     @Override
     public void tick() {
 
@@ -204,13 +202,12 @@ public class Enemy extends Creature {
     @Override
     public void render(Graphics g) {
 
-
     }
 
 
     @Override
     public void die() {
-        //never
+
     }
 
 

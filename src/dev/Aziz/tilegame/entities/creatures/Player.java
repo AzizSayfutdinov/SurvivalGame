@@ -6,10 +6,8 @@ import dev.Aziz.tilegame.entities.movingObjects.FireBall;
 import dev.Aziz.tilegame.gfx.Animation;
 import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.inventory.Inventory;
-import dev.Aziz.tilegame.sounds.SoundLoader;
 import dev.Aziz.tilegame.states.State;
 
-import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -86,7 +84,6 @@ public class Player extends Creature{
         animAttackDown.tick();
 
         die();
-        //Movement
         getInput();
         move();
 
