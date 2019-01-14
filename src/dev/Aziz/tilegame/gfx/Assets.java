@@ -51,10 +51,10 @@ public class Assets {
         menuSheet1 = new SpriteSheet(ImageLoader.loadImage("/textures/GUI1.png"));
         menuSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/GUI2.png"));
 
-        playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_Male.png"));
+        playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_dagger.png"));
         playerPantsSheet = new SpriteSheet(ImageLoader.loadImage("/textures/LEGS_pants_greenish.png"));
         playerSwordSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WEAPON_dagger.png"));
-        playerAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_attacking.png"));
+        //playerAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_dagger.png"));
         playerSwordAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sword.png"));
         skeletonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_skeleton.png"));
         orcSheet = new SpriteSheet(ImageLoader.loadImage("/textures/orc.png"));
@@ -125,8 +125,8 @@ public class Assets {
         loadPlayerAttackingDagger();
         //loadPlayerAttackingSword();
 
-        loadPlayerPants();
-        loadPlayerSword();
+        //loadPlayerPants();
+        //loadPlayerSword();
 
         // Enemy - Skeleton
 
@@ -197,30 +197,30 @@ public class Assets {
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                player_up[i] = playerSheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
+                player_up[i] = playerSheet.crop(i * enemyWidth, 8 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_up[i] = playerSheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
+                player_up[i] = playerSheet.crop(i * enemyWidth - 1, 8 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                player_left[i] = playerSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
+                player_left[i] = playerSheet.crop(i * enemyWidth, 9 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_left[i] = playerSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
+                player_left[i] = playerSheet.crop(i * enemyWidth - 1, 9 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                player_down[i] = playerSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_down[i] = playerSheet.crop(i * enemyWidth, 10 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_down[i] = playerSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_down[i] = playerSheet.crop(i * enemyWidth - 1, 10 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                player_right[i] = playerSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_right[i] = playerSheet.crop(i * enemyWidth, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_right[i] = playerSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_right[i] = playerSheet.crop(i * enemyWidth - 1, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
     }
 
@@ -228,30 +228,30 @@ public class Assets {
 
         for(int i = 0; i < 6; i++) {
             if(i == 0)
-                player_up_attacking[i] = playerAttackSheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
+                player_up_attacking[i] = playerSheet.crop(i * enemyWidth, 12 * enemyHeight - 1, enemyWidth, enemyHeight);      //TODO: change to a general variable: enemyWidth
             else
-                player_up_attacking[i] = playerAttackSheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
+                player_up_attacking[i] = playerSheet.crop(i * enemyWidth - 1, 12 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 6; i++) {
             if(i == 0)
-                player_left_attacking[i] = playerAttackSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
+                player_left_attacking[i] = playerSheet.crop(i * enemyWidth, 13 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_left_attacking[i] = playerAttackSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
+                player_left_attacking[i] = playerSheet.crop(i * enemyWidth - 1, 13 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 6; i++) {
             if(i == 0)
-                player_down_attacking[i] = playerAttackSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_down_attacking[i] = playerSheet.crop(i * enemyWidth, 14 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_down_attacking[i] = playerAttackSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_down_attacking[i] = playerSheet.crop(i * enemyWidth - 1, 14 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 6; i++) {
             if(i == 0)
-                player_right_attacking[i] = playerAttackSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_right_attacking[i] = playerSheet.crop(i * enemyWidth, 15 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                player_right_attacking[i] = playerAttackSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                player_right_attacking[i] = playerSheet.crop(i * enemyWidth - 1, 15 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
     }
 

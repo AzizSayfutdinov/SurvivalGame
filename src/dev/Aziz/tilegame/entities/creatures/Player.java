@@ -36,6 +36,8 @@ public class Player extends Creature {
     private Animation animAttackRight;
     private Animation animAttackLeft;
 
+    private Animation lastAnimation;
+
 
     private int points = 0;
 
@@ -63,20 +65,12 @@ public class Player extends Creature {
         animRight = new Animation(playerSpeed, Assets.player_right);
         animLeft = new Animation(playerSpeed, Assets.player_left);
 
-        animPantsDown = new Animation(playerSpeed, Assets.player_pants_down);
-        animPantsUp = new Animation(playerSpeed, Assets.player_pants_up);
-        animPantsRight = new Animation(playerSpeed, Assets.player_pants_right);
-        animPantsLeft = new Animation(playerSpeed, Assets.player_pants_left);
-
-        animSwordDown = new Animation(playerSpeed, Assets.player_sword_down);
-        animSwordUp = new Animation(playerSpeed, Assets.player_sword_up);
-        animSwordRight = new Animation(playerSpeed, Assets.player_sword_right);
-        animSwordLeft = new Animation(playerSpeed, Assets.player_sword_left);
-
         animAttackDown = new Animation(playerSpeed, Assets.player_down_attacking);
         animAttackUp = new Animation(playerSpeed, Assets.player_up_attacking);
         animAttackRight = new Animation(playerSpeed, Assets.player_right_attacking);
         animAttackLeft = new Animation(playerSpeed, Assets.player_left_attacking);
+
+        lastAnimation = animDown;
 
         //Inventory
         inventory = new Inventory(handler);
@@ -90,14 +84,7 @@ public class Player extends Creature {
         animUp.tick();
         animRight.tick();
         animLeft.tick();
-        animPantsDown.tick();
-        animPantsUp.tick();
-        animPantsRight.tick();
-        animPantsLeft.tick();
-        animSwordDown.tick();
-        animSwordUp.tick();
-        animSwordLeft.tick();
-        animSwordRight.tick();
+
         animAttackLeft.tick();
         animAttackRight.tick();
         animAttackUp.tick();
@@ -190,8 +177,6 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.setColor(Color.BLUE);
         g.drawImage(getCurrentAnimationFrameBody(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
-        g.drawImage(getCurrentAnimationFrameSword(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
-        g.drawImage(getCurrentAnimationFramePants(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
         g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
 
         // Health
@@ -226,70 +211,55 @@ public class Player extends Creature {
 
     }
 
-    private BufferedImage getCurrentAnimationFrameBody(){
+    private BufferedImage getCurrentAnimationFrameBody(){       //TODO: remember direction to stand still
 
         if(handler.getKeyManager().up){
+            lastAnimation = animUp;
             return animUp.getCurrentFrame();
         }
         if(handler.getKeyManager().attackUp) {
+            lastAnimation = animUp;
             return animAttackUp.getCurrentFrame();
         }
         if(handler.getKeyManager().down){
+            lastAnimation = animDown;
             return animDown.getCurrentFrame();
         }
         if(handler.getKeyManager().attackDown){
+            lastAnimation = animDown;
             return animAttackDown.getCurrentFrame();
         }
         if(handler.getKeyManager().left){
+            lastAnimation = animLeft;
             return animLeft.getCurrentFrame();
         }
         if(handler.getKeyManager().attackLeft){
+            lastAnimation = animLeft;
             return animAttackLeft.getCurrentFrame();
         }
         if(handler.getKeyManager().right){
+            lastAnimation = animRight;
             return animRight.getCurrentFrame();
         }
         if(handler.getKeyManager().attackRight){
+            lastAnimation = animRight;
             return animAttackRight.getCurrentFrame();
         }
-
-        return animDown.getFrameAtIndex(0);
-    }
-
-    private BufferedImage getCurrentAnimationFramePants(){
-
-        if(handler.getKeyManager().up){
-            return animPantsUp.getCurrentFrame();
+        if(lastAnimation.equals(animRight)){
+            return animRight.getFrameAtIndex(0);
         }
-        if(handler.getKeyManager().down){
-            return animPantsDown.getCurrentFrame();
+        if(lastAnimation.equals(animLeft)){
+            return animLeft.getFrameAtIndex(0);
         }
-        if(handler.getKeyManager().left){
-            return animPantsLeft.getCurrentFrame();
+        if(lastAnimation.equals(animDown)){
+            return animDown.getFrameAtIndex(0);
         }
-        if(handler.getKeyManager().right){
-            return animPantsRight.getCurrentFrame();
+        if(lastAnimation.equals(animUp)){
+            return animUp.getFrameAtIndex(0);
         }
 
-        return animPantsDown.getFrameAtIndex(1);
-    }
+        return animDown.getFrameAtIndex(0);     // default
 
-    private BufferedImage getCurrentAnimationFrameSword(){
-
-        if(handler.getKeyManager().attackUp){
-            return animSwordUp.getCurrentFrame();
-        }
-        if(handler.getKeyManager().attackDown){
-            return animSwordDown.getCurrentFrame();
-        }
-        if(handler.getKeyManager().attackLeft){
-            return animSwordLeft.getCurrentFrame();
-        }
-        if(handler.getKeyManager().attackRight){
-            return animSwordDown.getCurrentFrame();
-        }
-
-        return getCurrentAnimationFrameBody();
     }
 
 
