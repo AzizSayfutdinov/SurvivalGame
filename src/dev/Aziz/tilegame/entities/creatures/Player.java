@@ -5,8 +5,10 @@ import dev.Aziz.tilegame.entities.Entity;
 import dev.Aziz.tilegame.gfx.Animation;
 import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.inventory.Inventory;
+import dev.Aziz.tilegame.sounds.SoundLoader;
 import dev.Aziz.tilegame.states.State;
 
+import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -14,22 +16,18 @@ public class Player extends Creature {
 
     //AttackBounds
 
+    //Sound
+    SoundLoader loader = new SoundLoader();
+    Clip c;
+
+
     //Animation
     //Body
     private Animation animDown;
     private Animation animUp;
     private Animation animRight;
     private Animation animLeft;
-    //Pants TODO: delete pants and sword and use a different png instead
-    private Animation animPantsDown;
-    private Animation animPantsUp;
-    private Animation animPantsRight;
-    private Animation animPantsLeft;
-    //Sword
-    private Animation animSwordDown;
-    private Animation animSwordUp;
-    private Animation animSwordRight;
-    private Animation animSwordLeft;
+
     //Attack
     private Animation animAttackDown;
     private Animation animAttackUp;
@@ -49,10 +47,14 @@ public class Player extends Creature {
 
     public Player(Handler handler, float x, float y){
         super(handler, x,y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-        bounds.x = 35 / 2;
-        bounds.y = 30 / 2;
-        bounds.width = 64 / 2;
-        bounds.height = 98 / 2;
+        bounds.x = 20;
+        bounds.y = 25;
+        bounds.width = 23;
+        bounds.height = 30;
+
+        loader = new SoundLoader();
+        //c = loader.loadSound("res/sounds/stepdirt_1.wav");
+
 
         health = 100;
 
@@ -94,6 +96,8 @@ public class Player extends Creature {
         //Movement
         getInput();
         move();
+        playWalkSound();
+        //SoundLoader.playSound(Assets.testSound);
         handler.getGameCamera().centerOnEntity(this);
         //Attack
         checkAttacks();
@@ -103,6 +107,11 @@ public class Player extends Creature {
     }
 
 
+    private void playWalkSound(){
+
+        
+
+    }
 
     private void checkAttacks(){
 
@@ -177,7 +186,9 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.setColor(Color.BLUE);
         g.drawImage(getCurrentAnimationFrameBody(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
-        g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
+
+        // Bounds
+        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
 
         // Health
         g.setColor(Color.BLACK);

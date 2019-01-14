@@ -26,7 +26,13 @@ public class Orc extends Enemy {
     public Orc(Handler handler, float x, float y) {
         super(handler, x, y);
 
+        bounds.x = 26;
+        bounds.y = 35;
+        bounds.width = 16;
+        bounds.height = 25;
+
         health = ORC_HEALTH;
+        speed = 4;
 
         animDown = new Animation(enemyAnimSpeed, Assets.orc_down);
         animUp = new Animation(enemyAnimSpeed, Assets.orc_up);
@@ -70,11 +76,12 @@ public class Orc extends Enemy {
             g.setColor(Color.RED);
         g.fillRect((int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()) - 10, getWidth() / ORC_HEALTH * health, 10);
 
-        g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
-        g.setColor(Color.YELLOW);
-        g.drawRect((int)((x - handler.getGameCamera().getxOffset()) + playerBound.x),(int)(y - handler.getGameCamera().getyOffset()) + playerBound.y, playerBound.width, playerBound.height);
-        g.setColor(Color.RED);
-        g.drawRect((int)((x - handler.getGameCamera().getxOffset()) + attackBounds.x),(int)(y - handler.getGameCamera().getyOffset()) + attackBounds.y, attackBounds.width, attackBounds.height);
+        // Bounds
+        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
+        //g.setColor(Color.YELLOW);
+        //g.drawRect((int)((x - handler.getGameCamera().getxOffset()) + playerBound.x),(int)(y - handler.getGameCamera().getyOffset()) + playerBound.y, playerBound.width, playerBound.height);
+        //g.setColor(Color.RED);
+        //g.drawRect((int)((x - handler.getGameCamera().getxOffset()) + attackBounds.x),(int)(y - handler.getGameCamera().getyOffset()) + attackBounds.y, attackBounds.width, attackBounds.height);
 
     }
 

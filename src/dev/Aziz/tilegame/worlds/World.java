@@ -20,16 +20,16 @@ public class World{       //delete extension of world from layer
 
     public static final int WORLD_WIDTH = 50;
     public static final int WORLD_HEIGHT = 50;
-    public static final int SPAWN_X = 100;
-    public static final int SPAWN_Y = 100;
+    public static final int SPAWN_X = 100; //656;
+    public static final int SPAWN_Y = 100; //1250;
 
-    public static final int ENEMY_SPAWN_X1 = 250;
+    public static final int ENEMY_SPAWN_X1 = 280;
     public static final int ENEMY_SPAWN_Y1 = 30;
 
-    public static final int ENEMY_SPAWN_X2 = 700;
+    public static final int ENEMY_SPAWN_X2 = 690;
     public static final int ENEMY_SPAWN_Y2 = 30;
 
-    public static final int ENEMY_SPAWN_X3 = 250;
+    public static final int ENEMY_SPAWN_X3 = 1300;
     public static final int ENEMY_SPAWN_Y3 = 30;
 
     protected int spawnX = SPAWN_X, spawnY = SPAWN_Y;     //From the world.txt file
@@ -44,8 +44,8 @@ public class World{       //delete extension of world from layer
     private double timer = 0;
     private long currentTime;
 
-    private int enemies = 0;
-    private int maxEnemies = 5;
+    private int enemyWaves = 0;
+    private int maxEnemyWaves = 5;
 
     //Entities
     private EntityManager entityManager;
@@ -62,16 +62,15 @@ public class World{       //delete extension of world from layer
     public World(Handler handler, String path){
 
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 0, 0));
-        itemManager = new ItemManager(handler);
+        entityManager = new EntityManager(handler, new Player(handler, 1000, 1000));
 
-        entityManager.addEntity(new Skeleton(handler,500, 100));
-        entityManager.addEntity(new Orc(handler, 500, 300));
+        init();
 
-        entityManager.addEntity(new House(handler, 223, 1130));
-        entityManager.addEntity(new House(handler, 223 + 385, 1130));
+        entityManager.addEntity(new Skeleton(handler,ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+        entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+        //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
 
-        loadForest();
+
         //entityManager.addEntity(new Tree(handler, 400, 400, 1));
         //entityManager.addEntity(new Tree(handler, 400, 600, 2));
 
@@ -83,48 +82,6 @@ public class World{       //delete extension of world from layer
 
     }
 
-
-    public void loadSolidLayer(){
-
-        solidLayer = new Layer(handler);
-        solidLayer.init();
-        solidLayer.loadLayer("res/map/Map6/map6.xml", 1);
-        tileManager = new TileManager(handler);
-        tileManager.solidifyTiles(tileManager.getSolidTiles());
-
-    }
-
-    private void loadForest(){
-
-        int rangeX = (7 - 1) + 1;
-        int rangeY = (6 - 1) + 1;
-
-
-        for(int i = 0; i < 50; i++){
-            int x = -80 + ((int)(Math.random() * rangeX) + 1) * (145 + ((int)(Math.random() * 10) - 10));
-            int y = 50 + ((int)(Math.random() * rangeY) + 1) * (170 + ((int)(Math.random() * 10) - 10));
-            int tree = (int)(Math.random() * 2) + 1;
-
-            entityManager.addEntity(new Tree(handler, x, y, tree));
-        }
-
-    }
-
-    private void loadEnemies(){
-
-        currentTime = System.currentTimeMillis();
-        timer += currentTime - lastTime;
-        lastTime = currentTime;
-
-        if(timer > 3000){
-            if(enemies > maxEnemies)
-                return;
-            entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
-            entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
-            timer = 0;
-            enemies++;
-        }
-    }
 
     public void tick(){
 
@@ -141,6 +98,83 @@ public class World{       //delete extension of world from layer
         entityManager.render(g);
 
     }
+
+    public void init(){
+        loadForest();
+        itemManager = new ItemManager(handler);
+
+        entityManager.addEntity(new House(handler, 223, 1130));
+        entityManager.addEntity(new House(handler, 223 + 385, 1130));
+
+
+    }
+
+    public void loadSolidLayer(){
+
+        solidLayer = new Layer(handler);
+        solidLayer.init();
+        solidLayer.loadLayer("res/map/Map6/map6.xml", 1);
+        tileManager = new TileManager(handler);
+        tileManager.solidifyTiles(tileManager.getSolidTiles());
+
+    }
+
+    public void loadForest(){
+
+        int rangeX = (7 - 1) + 1;
+        int rangeY = (6 - 1) + 1;
+
+
+        for(int i = 0; i < 50; i++){
+            int x = -80 + ((int)(Math.random() * rangeX) + 1) * (145 + ((int)(Math.random() * 10) - 10));
+            int y = ((int)(Math.random() * rangeY) + 1) * (170 + ((int)(Math.random() * 30) - 15));
+            int tree = (int)(Math.random() * 2) + 1;
+
+            entityManager.addEntity(new Tree(handler, x, y, tree));
+        }
+
+    }
+
+    private void loadEnemies(){
+
+        currentTime = System.currentTimeMillis();
+        timer += currentTime - lastTime;
+        lastTime = currentTime;
+        int waves = 0;
+
+        if(timer > 3000){
+            if(enemyWaves > maxEnemyWaves)
+                return;
+
+         switch (waves){
+             case 0:
+                 entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+                 entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+                 break;
+
+             case 1:
+                 entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+                 entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
+                 break;
+
+             case 2:
+                 entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
+                 entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+                 break;
+
+         }
+
+            waves++;
+
+            if(waves > 2)
+                waves = 0;
+
+            //entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+            timer = 0;
+            enemyWaves++;
+        }
+    }
+
 
 
     private void loadWorld(String path, int index){
@@ -207,5 +241,9 @@ public class World{       //delete extension of world from layer
 
     public void setSolidLayer(Layer solidLayer) {
         this.solidLayer = solidLayer;
+    }
+
+    public void setEnemyWaves(int enemyWaves) {
+        this.enemyWaves = enemyWaves;
     }
 }

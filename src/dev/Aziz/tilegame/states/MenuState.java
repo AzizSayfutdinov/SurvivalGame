@@ -8,6 +8,7 @@ import dev.Aziz.tilegame.gfx.Text;
 import dev.Aziz.tilegame.ui.ClickListener;
 import dev.Aziz.tilegame.ui.UIImageButton;
 import dev.Aziz.tilegame.ui.UIManager;
+import dev.Aziz.tilegame.worlds.World;
 import sun.misc.ASCIICaseInsensitiveComparator;
 
 import java.awt.*;
@@ -30,9 +31,7 @@ public class MenuState extends State {
             public void onClick() {
                 handler.getMouseManager().setStateActive(false);
                 if(handler.getGame().isNewGame()){
-                    Player p = new Player(handler, 300, 300);
-                    handler.getWorld().getEntityManager().setPlayer(p);
-                    handler.getWorld().getEntityManager().addEntity(p);
+                    recreateWorld();
                 }
                 State.setState(handler.getGame().gameState);
             }
@@ -85,6 +84,17 @@ public class MenuState extends State {
 
     public UIManager getUiManager() {
         return uiManager;
+    }
+
+    private void recreateWorld(){
+
+        Player p = new Player(handler, World.SPAWN_X, World.SPAWN_Y);
+        handler.getWorld().getEntityManager().setPlayer(p);
+        handler.getWorld().getEntityManager().getEntities().removeAll(handler.getWorld().getEntityManager().getEntities());
+        handler.getWorld().setEnemyWaves(0);
+        handler.getWorld().getEntityManager().addEntity(p);
+        handler.getWorld().init();
+
     }
 
 }

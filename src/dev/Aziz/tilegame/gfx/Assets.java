@@ -1,5 +1,8 @@
 package dev.Aziz.tilegame.gfx;
 
+import dev.Aziz.tilegame.sounds.SoundLoader;
+
+import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -10,7 +13,11 @@ public class Assets {
     private static final int enemyWidth = 64, enemyHeight = 64;     //TODO: change name
     private static final int worldTileWidth = 16, worldTileHeight = 16;
 
+    public static Clip testSound;
+
     public static Font font28;  //size = 28;
+    public static Font font22;
+    public static Font font50;
 
     public static BufferedImage dirt, grass, stone, tree1, tree2, rock, wood;
     public static BufferedImage house;
@@ -44,8 +51,13 @@ public class Assets {
 
     public static void init(){
 
-        font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
+        testSound = SoundLoader.loadSound("/sounds/stepdirt_1.wav");
 
+        font50 = FontLoader.loadFont("res/fonts/slkscr.ttf", 50);
+        font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
+        font22 = FontLoader.loadFont("res/fonts/slkscr.ttf", 22);
+
+        //TODO: Check if you have to adjust the paths to load the jar file successfully
         sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
         sheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/sheet3.png"));
 
