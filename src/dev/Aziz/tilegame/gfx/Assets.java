@@ -24,6 +24,7 @@ public class Assets {
 
     public static BufferedImage house, wood, tree1, tree2;
     public static BufferedImage inventoryScreen;
+    public static BufferedImage btn_restartImage;
     public static BufferedImage[] player_down, player_up, player_right, player_left;
     public static BufferedImage[] player_down_attacking, player_up_attacking, player_right_attacking, player_left_attacking;
     public static BufferedImage[] skeleton_down, skeleton_up, skeleton_left, skeleton_right;
@@ -34,6 +35,7 @@ public class Assets {
     public static BufferedImage[] btn_options;
     public static BufferedImage[] btn_credits;
     public static BufferedImage[] btn_exit;
+    public static BufferedImage[] btn_restart;
 
     public static BufferedImage[] worldTiles;
 
@@ -47,6 +49,7 @@ public class Assets {
     private static SpriteSheet treeSheeet;
     private static SpriteSheet menuSheet1;
     private static SpriteSheet menuSheet2;
+    private static SpriteSheet btnRestartSheet;
 
     public static void init(){
 
@@ -66,7 +69,7 @@ public class Assets {
         sheet3 = new SpriteSheet(ImageLoader.loadImage("/textures/sheet3.png"));
 
         playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_dagger.png"));
-        playerSwordSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WEAPON_dagger.png"));
+        //playerSwordSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WEAPON_dagger.png"));
         playerSwordAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sword.png"));
         skeletonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/skeleton_dagger.png"));
         orcSheet = new SpriteSheet(ImageLoader.loadImage("/textures/orc.png"));
@@ -76,6 +79,8 @@ public class Assets {
         treeSheeet = new SpriteSheet(ImageLoader.loadImage("/textures/trees-green.png"));
 
         inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
+
+        btnRestartSheet = new SpriteSheet(ImageLoader.loadImage("/textures/restart.png"));
 
 
         skeleton_up = new BufferedImage[9];
@@ -112,9 +117,12 @@ public class Assets {
         btn_options = new BufferedImage[2];
         btn_credits = new BufferedImage[2];
         btn_exit = new BufferedImage[2];
+        btn_restart = new BufferedImage[1];
 
         btn_start[0] = menuSheet1.crop(454, 194, 462, 88);
         btn_start[1] = menuSheet2.crop(454, 194, 462, 88);
+
+        btn_restart[0] = btnRestartSheet.crop(0,0,384, 384);
 
         btn_options[0] = menuSheet1.crop(454, 194 + 88, 462, 88);
         btn_options[1] = menuSheet2.crop(454, 194 + 88, 462, 88);

@@ -1,6 +1,5 @@
 package dev.Aziz.tilegame.states;
 
-import dev.Aziz.tilegame.Game;
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.gfx.Assets;
@@ -9,7 +8,6 @@ import dev.Aziz.tilegame.ui.ClickListener;
 import dev.Aziz.tilegame.ui.UIImageButton;
 import dev.Aziz.tilegame.ui.UIManager;
 import dev.Aziz.tilegame.worlds.World;
-import sun.misc.ASCIICaseInsensitiveComparator;
 
 import java.awt.*;
 

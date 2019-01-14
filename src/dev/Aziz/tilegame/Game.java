@@ -34,6 +34,7 @@ public class Game implements Runnable{
     public State creditState;
     public State exitState;
     public State gameOverState;
+    public State gameWonState;
 
     //Input
     private KeyManager keyManager;
@@ -81,6 +82,7 @@ public class Game implements Runnable{
         creditState = new CreditState(handler);
         exitState = new ExitState(handler);
         gameOverState = new GameOverState(handler);
+        gameWonState = new GameWonState(handler);
         State.setState(menuState);
 
         backgroundMusic = new Sound(Assets.backGroundMusic);

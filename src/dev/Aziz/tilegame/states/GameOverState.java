@@ -8,12 +8,6 @@ import java.awt.*;
 
 public class GameOverState extends State {
 
-    private long timer = 0;
-    private long lastTime = 1000;
-    private long waitTime = 3000;   // 3s
-
-    private double survivedTime;
-
     public GameOverState(Handler handler) {
         super(handler);
 
@@ -21,9 +15,6 @@ public class GameOverState extends State {
 
     @Override
     public void tick() {
-
-        timer += System.currentTimeMillis() - lastTime;
-        lastTime = System.currentTimeMillis();
 
         getInput();
 

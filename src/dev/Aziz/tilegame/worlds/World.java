@@ -1,13 +1,16 @@
 package dev.Aziz.tilegame.worlds;
 
 import dev.Aziz.tilegame.Handler;
+import dev.Aziz.tilegame.entities.Entity;
 import dev.Aziz.tilegame.entities.EntityManager;
+import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
 import dev.Aziz.tilegame.entities.statics.House;
 import dev.Aziz.tilegame.entities.statics.Tree;
 import dev.Aziz.tilegame.items.ItemManager;
+import dev.Aziz.tilegame.states.State;
 import dev.Aziz.tilegame.tiles.TileManager;
 import dev.Aziz.tilegame.utils.Utils;
 
@@ -142,8 +145,11 @@ public class World{
         int waves = 0;
 
         if(timer > 3000){
-            if(enemyWaves > maxEnemyWaves)
+            if(enemyWaves > maxEnemyWaves){
+                checkIfWon();
                 return;
+            }
+
 
          switch (waves){
              case 0:
@@ -171,6 +177,22 @@ public class World{
             timer = 0;
             enemyWaves++;
         }
+    }
+
+    private void checkIfWon(){
+
+        int count = 0;
+
+        for(Entity e: handler.getWorld().getEntityManager().getEntities()){
+            if(e instanceof Enemy){
+                count++;
+            }
+        }
+
+        if(count < 1){
+            State.setState(handler.getGame().gameWonState);
+        }
+
     }
 
 

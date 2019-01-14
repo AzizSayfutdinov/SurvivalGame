@@ -100,7 +100,7 @@ public class Player extends Creature{
 
     private void checkDirection(){
 
-
+        // remember direction player was looking at last
 
     }
 
@@ -220,9 +220,6 @@ public class Player extends Creature{
 
 
         // Health
-        g.setColor(Color.BLACK);
-        g.drawRect(handler.getGame().getWidth() - 210, 20, 100, 35);
-
         if(health > 70)
             g.setColor(Color.GREEN);
         else if(health > 20)
@@ -230,6 +227,9 @@ public class Player extends Creature{
         else
             g.setColor(Color.RED);
         g.fillRect(handler.getGame().getWidth() - 210, 20,  health * 2, 35);
+        g.setColor(Color.BLACK);
+        g.drawRect(handler.getGame().getWidth() - 210, 20, 200, 35);
+
 
     }
 
