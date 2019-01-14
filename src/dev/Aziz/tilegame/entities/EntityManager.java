@@ -33,7 +33,7 @@ public class EntityManager {
     }
 
     public void tick(){
-        Iterator<Entity> it = entities.iterator();
+        Iterator<Entity> it = entities.iterator();      // to avoid concurrentModificationException: occurs when you try to modify a list when it is being iterated
 
         while(it.hasNext()){
             Entity e = it.next();

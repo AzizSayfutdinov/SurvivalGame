@@ -20,8 +20,8 @@ public class World{       //delete extension of world from layer
 
     public static final int WORLD_WIDTH = 50;
     public static final int WORLD_HEIGHT = 50;
-    public static final int SPAWN_X = 100; //656;
-    public static final int SPAWN_Y = 100; //1250;
+    public static final int SPAWN_X = 656;
+    public static final int SPAWN_Y = 1250;
 
     public static final int ENEMY_SPAWN_X1 = 280;
     public static final int ENEMY_SPAWN_Y1 = 30;
@@ -66,8 +66,9 @@ public class World{       //delete extension of world from layer
 
         init();
 
-        entityManager.addEntity(new Skeleton(handler,ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
-        entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+        // Debug entities
+        //entityManager.addEntity(new Skeleton(handler,ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
+        //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
         //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
 
 
@@ -85,8 +86,9 @@ public class World{       //delete extension of world from layer
 
     public void tick(){
 
-        //loadEnemies();
+        loadEnemies();
         entityManager.tick();
+        //entityManager.getPlayer().postTick();
         itemManager.tick();
 
     }

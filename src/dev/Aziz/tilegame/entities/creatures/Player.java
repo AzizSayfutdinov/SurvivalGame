@@ -2,6 +2,7 @@ package dev.Aziz.tilegame.entities.creatures;
 
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.Entity;
+import dev.Aziz.tilegame.entities.movingObjects.FireBall;
 import dev.Aziz.tilegame.gfx.Animation;
 import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.inventory.Inventory;
@@ -12,15 +13,7 @@ import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Player extends Creature implements Runnable{
-
-    //AttackBounds
-
-    //Sound
-    SoundLoader loader = new SoundLoader();
-    Clip c;
-
-    private Thread playerThread;
+public class Player extends Creature{
 
     //Animation
     //Body
@@ -38,12 +31,11 @@ public class Player extends Creature implements Runnable{
     private Animation lastAnimation;
 
 
-
-
     private int points = 0;
 
     //Attack timer
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
+    private long lastShootTimer, shootCoolDown = 50, shootTimer = shootCoolDown;
 
     //Inventory
     private Inventory inventory;
@@ -55,13 +47,11 @@ public class Player extends Creature implements Runnable{
         bounds.width = 23;
         bounds.height = 30;
 
-        loader = new SoundLoader();
-        //c = loader.loadSound("res/sounds/stepdirt_1.wav");
-
 
         health = 100;
 
         lastAttackTimer = System.currentTimeMillis();
+        lastShootTimer = System.currentTimeMillis();
 
         int playerSpeed = 40; //ms
         //Init of animations
@@ -79,11 +69,6 @@ public class Player extends Creature implements Runnable{
 
         //Inventory
         inventory = new Inventory(handler);
-
-        playerThread = new Thread(this);
-        playerThread.start();
-
-
 
     }
 
@@ -105,26 +90,57 @@ public class Player extends Creature implements Runnable{
         getInput();
         move();
 
-        //SoundLoader.playSound(Assets.testSound);
+
         handler.getGameCamera().centerOnEntity(this);
         //Attack
         checkAttacks();
         //Inventory
         inventory.tick();
 
-    }
-
-
-    @Override
-    public void run() {
+        checkDirection();
 
     }
 
-    private void playWalkSound(){
+    private void checkDirection(){
 
-            SoundLoader.playSound(Assets.testSound);
+
 
     }
+
+    public void postTick(){     //to avoid concurrentModificationException
+
+        shootTimer += System.currentTimeMillis() - lastShootTimer;
+        lastShootTimer = System.currentTimeMillis();
+
+        if(shootTimer < shootCoolDown)
+            return;
+
+        shoot();
+        shootTimer = 0;
+    }
+
+    private void shoot(){
+
+        FireBall fireBall = new FireBall(handler);
+
+        if(handler.getKeyManager().shoot){
+            handler.getWorld().getEntityManager().addEntity(fireBall);     //concurrentModificationException
+        }
+
+        Rectangle fireBallBounds = fireBall.getCollisionBounds(0f, 0f);
+
+
+        for(Entity e: handler.getWorld().getEntityManager().getEntities()){
+            if(e.equals(fireBall))
+                continue;
+            if(e.getCollisionBounds(0,0).intersects(fireBallBounds)){
+                e.hurt(1);      // amt = amount of damage
+                return;
+            }
+        }
+
+    }
+
 
     private void checkAttacks(){
 
@@ -202,6 +218,9 @@ public class Player extends Creature implements Runnable{
 
         // Bounds
         //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
+        //g.setColor(Color.RED);
+        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + fireBallBounds.x,(int)(y - handler.getGameCamera().getyOffset()) + fireBallBounds.y, fireBallBounds.width, fireBallBounds.height);
+
 
         // Health
         g.setColor(Color.BLACK);
@@ -299,8 +318,29 @@ public class Player extends Creature implements Runnable{
         return points;
     }
 
+    public Animation getLastAnimation() {
+        return lastAnimation;
+    }
+
+    public Animation getAnimDown() {
+        return animDown;
+    }
+
+    public Animation getAnimUp() {
+        return animUp;
+    }
+
+    public Animation getAnimRight() {
+        return animRight;
+    }
+
+    public Animation getAnimLeft() {
+        return animLeft;
+    }
+
     public void setPoints(int points) {
         this.points = points;
     }
+
 
 }

@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class Orc extends Enemy {
 
-    private static final int ORC_HEALTH = 20;
+    private static final int ORC_HEALTH = 10;
 
     //Animation
     //Move

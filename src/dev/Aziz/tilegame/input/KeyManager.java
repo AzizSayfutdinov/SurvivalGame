@@ -5,14 +5,17 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
 
-    private boolean[] keys, justPressed, cantPress;
+    private boolean[] keys, justPressed, cantPress;                     // TODO: meantion in the doc: up, down,... not private
     public boolean up, down, left, right, esc;
     public boolean attackUp, attackDown, attackLeft, attackRight;
+    public boolean shoot;
 
     public KeyManager(){
         keys = new boolean[256];
         justPressed = new boolean[keys.length];
         cantPress = new boolean[keys.length];
+
+
     }
 
     public void tick(){
@@ -45,6 +48,9 @@ public class KeyManager implements KeyListener {
         attackRight = keys[KeyEvent.VK_RIGHT];
 
         esc = keys[KeyEvent.VK_ESCAPE];
+
+        shoot = keys[KeyEvent.VK_SPACE];
+
     }
 
     public boolean keyJustPressed(int keyCode){
