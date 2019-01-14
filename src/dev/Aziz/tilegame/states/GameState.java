@@ -42,7 +42,7 @@ public class GameState extends State {
         world.render(g);
 
         Text.drawString(g, String.format("%02d:%02d", (int) (elapsedTime / 60), (int)(elapsedTime % 60 )), 30, 30, false, Color.WHITE, Assets.font28);
-        Text.drawString(g, "POINTS: " + handler.getWorld().getEntityManager().getPlayer().getPoints(), handler.getGame().getWidth() - 200, 70, false, Color.WHITE, Assets.font28);
+        Text.drawString(g, "POINTS: " + handler.getWorld().getEntityManager().getPlayer().getPoints(), handler.getGame().getWidth() - 212, 90, false, Color.WHITE, Assets.font28);
 
     }
 

@@ -19,6 +19,7 @@ public class Assets {
     public static Font font28;  //size = 28;
     public static Font font22;
     public static Font font50;
+    public static Font font100;
 
     public static BufferedImage dirt, grass, stone, tree1, tree2, rock, wood;
     public static BufferedImage house;
@@ -55,6 +56,7 @@ public class Assets {
         testSound = SoundLoader.loadSound("/sounds/stepdirt_1.wav");
         backGroundMusic = SoundLoader.loadSound("/sounds/Heroic Demise.wav");
 
+        font100 = FontLoader.loadFont("res/fonts/slkscr.ttf", 100);
         font50 = FontLoader.loadFont("res/fonts/slkscr.ttf", 50);
         font28 = FontLoader.loadFont("res/fonts/slkscr.ttf", 28);
         font22 = FontLoader.loadFont("res/fonts/slkscr.ttf", 22);

@@ -13,24 +13,6 @@ import org.xml.sax.SAXException;
 //contains helper functions and methodes
 public class Utils {
 
-    public static String loadFileAsString(String path){
-        StringBuilder builder = new StringBuilder();
-
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            String line;
-
-            while((line = br.readLine()) != null){
-                builder.append(line + "\n");
-            }
-            br.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-        return builder.toString();
-    }
-
     public static int parseInt(String number){
 
         try{
@@ -74,7 +56,7 @@ public class Utils {
             e.printStackTrace();
         }
 
-        return "FAIL";
+        return "FAILED TO LOAD XML";
 
     }
 

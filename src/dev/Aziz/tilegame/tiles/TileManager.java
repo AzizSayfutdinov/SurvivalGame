@@ -66,26 +66,6 @@ public class TileManager {
             }
         }
 
-        //addSolidTile(7);
-        //addSolidTile(8);
-        //addSolidTile(9);
-        //addSolidTile(10);
-        //addSolidTile(11);
-        //addSolidTile(47);
-        //addSolidTile(48);
-        //addSolidTile(49);
-        //addSolidTile(50);
-        //addSolidTile(51);
-        //addSolidTile(7);
-        //addSolidTile(7);
-        //addSolidTile(7);
-        //addSolidTile(7);
-        //addSolidTile(486);
-        //addSolidTile(405);
-        //addSolidTile(407);
-        //addSolidTile(365);
-        //addSolidTile(366);
-        //addSolidTile(367);
 
     }
 

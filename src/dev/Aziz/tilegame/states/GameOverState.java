@@ -31,10 +31,10 @@ public class GameOverState extends State {
 
     @Override
     public void render(Graphics g) {
-        Text.drawString(g, "GAME OVER!", 300, 300, false, Color.RED, Assets.font28);
-        Text.drawString(g, "Press ESC to get to the MENU", 100, 150, false, Color.BLACK, Assets.font28);
+        Text.drawString(g, "GAME OVER!", handler.getGame().getWidth() / 2, handler.getGame().getHeight() / 2, true, Color.RED, Assets.font100);
+        Text.drawString(g, "Press ESC to get to the MENU", 100, handler.getGame().getHeight() - 100, false, Color.BLACK, Assets.font28);
 
-        Text.drawString(g, "SCORE: " + handler.getWorld().getEntityManager().getPlayer().getPoints() + " Points", 100, 400, false, Color.BLACK,Assets.font28);
+        Text.drawString(g, "SCORE: " + handler.getWorld().getEntityManager().getPlayer().getPoints() + " Points", 100, 150, false, Color.BLACK,Assets.font28);
     }
 
     private void getInput(){

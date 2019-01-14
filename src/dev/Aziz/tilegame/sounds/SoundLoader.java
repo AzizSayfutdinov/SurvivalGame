@@ -12,7 +12,6 @@ public class SoundLoader {
 
         try
         {
-            //AudioInputStream audioIn = AudioSystem.getAudioInputStream( getClass().getClassLoader().getResource( path ) );
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(SoundLoader.class.getResource(path));
             in = AudioSystem.getClip();
             in.open(audioIn);

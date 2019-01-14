@@ -224,7 +224,7 @@ public class Player extends Creature{
 
         // Health
         g.setColor(Color.BLACK);
-        g.drawRect(handler.getGame().getWidth() - 110, 20, 100, 15);
+        g.drawRect(handler.getGame().getWidth() - 210, 20, 100, 35);
 
         if(health > 70)
             g.setColor(Color.GREEN);
@@ -232,7 +232,7 @@ public class Player extends Creature{
             g.setColor(Color.ORANGE);
         else
             g.setColor(Color.RED);
-        g.fillRect(handler.getGame().getWidth() - 110, 20,  health, 15);
+        g.fillRect(handler.getGame().getWidth() - 210, 20,  health * 2, 35);
 
     }
 
