@@ -19,6 +19,7 @@ public class Assets {
     public static BufferedImage[] player_pants_down, player_pants_up, player_pants_right, player_pants_left;
     public static BufferedImage[] player_sword_down, player_sword_up, player_sword_right, player_sword_left;
     public static BufferedImage[] skeleton_down, skeleton_up, skeleton_left, skeleton_right;
+    public static BufferedImage[] skeleton_down_attacking, skeleton_up_attacking, skeleton_left_attacking, skeleton_right_attacking;
     public static BufferedImage[] orc_down, orc_up, orc_left, orc_right;
     public static BufferedImage[] orc_down_attacking, orc_up_attacking, orc_left_attacking, orc_right_attacking;
     public static BufferedImage[] btn_start;
@@ -29,9 +30,7 @@ public class Assets {
     public static BufferedImage[] worldTiles;
 
     private static SpriteSheet playerSheet;
-    private static SpriteSheet playerPantsSheet;
     private static SpriteSheet playerSwordSheet;
-    private static SpriteSheet playerAttackSheet;
     private static SpriteSheet playerSwordAttackSheet;
     private static SpriteSheet sheet;
     private static SpriteSheet sheet3;
@@ -52,11 +51,9 @@ public class Assets {
         menuSheet2 = new SpriteSheet(ImageLoader.loadImage("/textures/GUI2.png"));
 
         playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_dagger.png"));
-        playerPantsSheet = new SpriteSheet(ImageLoader.loadImage("/textures/LEGS_pants_greenish.png"));
         playerSwordSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WEAPON_dagger.png"));
-        //playerAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_dagger.png"));
         playerSwordAttackSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player_sword.png"));
-        skeletonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/BODY_skeleton.png"));
+        skeletonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/skeleton_dagger.png"));
         orcSheet = new SpriteSheet(ImageLoader.loadImage("/textures/orc.png"));
 
         worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Overworld.png"));
@@ -68,6 +65,11 @@ public class Assets {
         skeleton_down = new BufferedImage[9];
         skeleton_left = new BufferedImage[9];
         skeleton_right = new BufferedImage[9];
+
+        skeleton_up_attacking = new BufferedImage[6];
+        skeleton_down_attacking = new BufferedImage[6];
+        skeleton_left_attacking = new BufferedImage[6];
+        skeleton_right_attacking = new BufferedImage[6];
 
         orc_up = new BufferedImage[9];
         orc_down = new BufferedImage[9];
@@ -123,14 +125,12 @@ public class Assets {
 
         loadPlayer();
         loadPlayerAttackingDagger();
-        //loadPlayerAttackingSword();
-
-        //loadPlayerPants();
-        //loadPlayerSword();
 
         // Enemy - Skeleton
 
         loadSkeleton();
+        loadSkeletonAttacking();
+
         loadOrc();
         loadOrcAttacking();
 
@@ -286,96 +286,67 @@ public class Assets {
         }
     }
 
-    private static void loadPlayerPants(){
-
-        for(int i = 0; i < 9; i++) {
-            if(i == 0)
-                player_pants_up[i] = playerPantsSheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
-            else
-                player_pants_up[i] = playerPantsSheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
-        }
-
-        for(int i = 0; i < 9; i++) {
-            if(i == 0)
-                player_pants_left[i] = playerPantsSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
-            else
-                player_pants_left[i] = playerPantsSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
-        }
-
-        for(int i = 0; i < 9; i++) {
-            if(i == 0)
-                player_pants_down[i] = playerPantsSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
-            else
-                player_pants_down[i] = playerPantsSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
-        }
-
-        for(int i = 0; i < 9; i++) {
-            if(i == 0)
-                player_pants_right[i] = playerPantsSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
-            else
-                player_pants_right[i] = playerPantsSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
-        }
-    }
-
-    private static void loadPlayerSword(){
-
-        for(int i = 0; i < 6; i++) {
-            if(i == 0)
-                player_sword_up[i] = playerSwordSheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
-            else
-                player_sword_up[i] = playerSwordSheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
-        }
-
-        for(int i = 0; i < 6; i++) {
-            if(i == 0)
-                player_sword_left[i] = playerSwordSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
-            else
-                player_sword_left[i] = playerSwordSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
-        }
-
-        for(int i = 0; i < 6; i++) {
-            if(i == 0)
-                player_sword_down[i] = playerSwordSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
-            else
-                player_sword_down[i] = playerSwordSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
-        }
-
-        for(int i = 0; i < 6; i++) {
-            if(i == 0)
-                player_sword_right[i] = playerSwordSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
-            else
-                player_sword_right[i] = playerSwordSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
-        }
-    }
 
     private static void loadSkeleton(){
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                skeleton_up[i] = skeletonSheet.crop(i * enemyWidth, 0, enemyWidth, enemyHeight);
+                skeleton_up[i] = skeletonSheet.crop(i * enemyWidth, 8 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                skeleton_up[i] = skeletonSheet.crop(i * enemyWidth - 1, 0, enemyWidth, enemyHeight);
+                skeleton_up[i] = skeletonSheet.crop(i * enemyWidth - 1, 8 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                skeleton_left[i] = skeletonSheet.crop(i * enemyWidth, enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_left[i] = skeletonSheet.crop(i * enemyWidth, 9 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                skeleton_left[i] = skeletonSheet.crop(i * enemyWidth - 1, enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_left[i] = skeletonSheet.crop(i * enemyWidth - 1, 9 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                skeleton_down[i] = skeletonSheet.crop(i * enemyWidth, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_down[i] = skeletonSheet.crop(i * enemyWidth, 10 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                skeleton_down[i] = skeletonSheet.crop(i * enemyWidth - 1, 2 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_down[i] = skeletonSheet.crop(i * enemyWidth - 1, 10 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
         for(int i = 0; i < 9; i++) {
             if(i == 0)
-                skeleton_right[i] = skeletonSheet.crop(i * enemyWidth, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_right[i] = skeletonSheet.crop(i * enemyWidth, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
             else
-                skeleton_right[i] = skeletonSheet.crop(i * enemyWidth - 1, 3 * enemyHeight - 1, enemyWidth, enemyHeight);
+                skeleton_right[i] = skeletonSheet.crop(i * enemyWidth - 1, 11 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+    }
+
+    private static void loadSkeletonAttacking(){
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                skeleton_up_attacking[i] = skeletonSheet.crop(i * enemyWidth, 12 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                skeleton_up_attacking[i] = skeletonSheet.crop(i * enemyWidth - 1, 12 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                skeleton_left_attacking[i] = skeletonSheet.crop(i * enemyWidth, 13 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                skeleton_left_attacking[i] = skeletonSheet.crop(i * enemyWidth - 1, 13 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                skeleton_down_attacking[i] = skeletonSheet.crop(i * enemyWidth, 14 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                skeleton_down_attacking[i] = skeletonSheet.crop(i * enemyWidth - 1, 14 * enemyHeight - 1, enemyWidth, enemyHeight);
+        }
+
+        for(int i = 0; i < 6; i++) {
+            if(i == 0)
+                skeleton_right_attacking[i] = skeletonSheet.crop(i * enemyWidth, 15 * enemyHeight - 1, enemyWidth, enemyHeight);
+            else
+                skeleton_right_attacking[i] = skeletonSheet.crop(i * enemyWidth - 1, 15 * enemyHeight - 1, enemyWidth, enemyHeight);
         }
 
     }

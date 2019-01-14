@@ -17,6 +17,11 @@ public class Skeleton extends Enemy {
     private Animation animRight;
     private Animation animLeft;
 
+    private Animation animAttackDown;
+    private Animation animAttackUp;
+    private Animation animAttackRight;
+    private Animation animAttackLeft;
+
 
 
 
@@ -31,6 +36,12 @@ public class Skeleton extends Enemy {
         animRight = new Animation(enemyAnimSpeed, Assets.skeleton_right);
         animLeft = new Animation(enemyAnimSpeed, Assets.skeleton_left);
 
+        animAttackDown = new Animation(enemyAnimSpeed, Assets.skeleton_down_attacking);
+        animAttackUp = new Animation(enemyAnimSpeed, Assets.skeleton_up_attacking);
+        animAttackRight = new Animation(enemyAnimSpeed, Assets.skeleton_right_attacking);
+        animAttackLeft = new Animation(enemyAnimSpeed, Assets.skeleton_left_attacking);
+
+
     }
 
     public void tick(){
@@ -41,6 +52,10 @@ public class Skeleton extends Enemy {
         animUp.tick();
         animRight.tick();
         animLeft.tick();
+        animAttackDown.tick();
+        animAttackUp.tick();
+        animAttackRight.tick();
+        animAttackLeft.tick();
 
     }
 
@@ -70,6 +85,22 @@ public class Skeleton extends Enemy {
 
 
     private BufferedImage getCurrentAnimationFrame(){
+
+        if(moveRight && attacking){
+            return animAttackRight.getCurrentFrame();
+        }
+
+        if(moveUp && attacking){
+            return animAttackUp.getCurrentFrame();
+        }
+
+        if(moveLeft && attacking){
+            return animAttackLeft.getCurrentFrame();
+        }
+
+        if(moveDown && attacking){
+            return animAttackDown.getCurrentFrame();
+        }
 
         if(moveRight){
             return animRight.getCurrentFrame();

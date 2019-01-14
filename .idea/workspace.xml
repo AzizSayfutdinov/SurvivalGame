@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e1df328-92db-4de1-b0fc-849ee3c3991b" name="Default Changelist" comment="Enemy class divided into skeleton and orc class">
-      <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/AzizS.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/AzizS.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -76,14 +77,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="8" />
-          <entry key="java" value="14896" />
+          <entry key="java" value="15040" />
           <entry key="txt" value="309" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="14896" />
+          <entry key="JAVA" value="15040" />
           <entry key="PLAIN_TEXT" value="317" />
           <entry key="XML" value="4" />
         </counts>
@@ -135,9 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="127" column="10" selection-start-line="127" selection-start-column="10" selection-end-line="127" selection-end-column="10" />
-              <caret line="128" column="10" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
+            <state relative-caret-position="451">
+              <caret line="136" column="8" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,8 +148,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
+            <state relative-caret-position="291">
+              <caret line="102" column="19" lean-forward="true" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -187,7 +187,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="238">
               <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -196,11 +196,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+            <state relative-caret-position="393">
+              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,11 +220,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="275" column="58" selection-start-line="275" selection-start-column="58" selection-end-line="275" selection-end-column="58" />
+            <state relative-caret-position="393">
+              <caret line="260" column="41" selection-start-line="260" selection-start-column="41" selection-end-line="260" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9286#9287#0" expanded="true" />
@@ -295,13 +295,13 @@
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/states/GameState.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/states/GameOverState.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java" />
-        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/states/MenuState.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/Entity.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java" />
-        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" />
+        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java" />
+        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java" />
       </list>
     </option>
   </component>
@@ -528,7 +528,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="plugin&#9;ACTION&#9;WelcomeScreen.Plugins&#10;plug&#9;ACTION&#9;WelcomeScreen.Plugins" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547454605114" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547455590689" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -606,7 +606,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -615,7 +615,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.30043384" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.30043384" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30802602" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1003,26 +1003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/states/GameOverState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -1057,32 +1037,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java">
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
+        <state relative-caret-position="393">
+          <caret line="260" column="41" selection-start-line="260" selection-start-column="41" selection-end-line="260" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9286#9287#0" expanded="true" />
+            <element signature="e#9315#9316#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="127" column="10" selection-start-line="127" selection-start-column="10" selection-end-line="127" selection-end-column="10" />
-          <caret line="128" column="10" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
+        <state relative-caret-position="451">
+          <caret line="136" column="8" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="275" column="58" selection-start-line="275" selection-start-column="58" selection-end-line="275" selection-end-column="58" />
+        <state relative-caret-position="238">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9286#9287#0" expanded="true" />
-            <element signature="e#9315#9316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="102" column="19" lean-forward="true" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
