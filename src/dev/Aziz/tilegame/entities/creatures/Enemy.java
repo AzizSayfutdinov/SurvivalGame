@@ -54,9 +54,7 @@ public class Enemy extends Creature {
     public void chase(){
 
         float dx = x - handler.getWorld().getEntityManager().getPlayer().getX();
-        float dy = y - handler.getWorld().getEntityManager().getPlayer().getY();
-        System.out.println("dx: " + dx);
-        System.out.println("dy: " + dy);
+        float dy = y - handler.getWorld().getEntityManager().getPlayer().getY();;
 
         if(Math.abs(dx) > Math.abs(dy)){
 
