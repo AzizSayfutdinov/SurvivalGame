@@ -33,11 +33,15 @@ public class Player extends Creature{
 
     //Attack timer
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
-    private long lastShootTimer, shootCoolDown = 50, shootTimer = shootCoolDown;
+    private long lastShootTimer, shootCoolDown = 200, shootTimer = shootCoolDown;
     private long lastSoundTimer, soundCoolDown = 300, soundTimer = soundCoolDown;
 
     //Inventory
     private Inventory inventory;
+
+    private FireBall fireBall;
+    private Rectangle fireBallBounds;
+    private boolean shot = false;
 
     public Player(Handler handler, float x, float y){
         super(handler, x,y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -100,6 +104,7 @@ public class Player extends Creature{
         checkDirection();
         playSounds();
 
+
     }
 
     private void playSounds(){
@@ -139,20 +144,21 @@ public class Player extends Creature{
 
     private void shoot(){
 
-        FireBall fireBall = new FireBall(handler);
+        fireBall = new FireBall(handler);
 
         if(handler.getKeyManager().shoot){
-            handler.getWorld().getEntityManager().addEntity(fireBall);     //concurrentModificationException
+            handler.getWorld().getEntityManager().addEntity(fireBall);     //concurrentModificationException, therefore postTick()
         }
 
-        Rectangle fireBallBounds = fireBall.getCollisionBounds(0f, 0f);
+        fireBallBounds = fireBall.getCollisionBounds(-x, -y);
 
+        shot = true;
 
         for(Entity e: handler.getWorld().getEntityManager().getEntities()){
             if(e.equals(fireBall))
                 continue;
             if(e.getCollisionBounds(0,0).intersects(fireBallBounds)){
-                e.hurt(1);      // amt = amount of damage
+                e.hurt(10);      // amt = amount of damage
                 return;
             }
         }
@@ -239,8 +245,8 @@ public class Player extends Creature{
 
         // Bounds
         //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
-        //g.setColor(Color.RED);
-        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + fireBallBounds.x,(int)(y - handler.getGameCamera().getyOffset()) + fireBallBounds.y, fireBallBounds.width, fireBallBounds.height);
+       g.setColor(Color.RED);
+       g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + fireBallBounds.x,(int)(y - handler.getGameCamera().getyOffset()) + fireBallBounds.y, fireBallBounds.width, fireBallBounds.height);
 
 
         // Health

@@ -88,7 +88,7 @@ public class World{
 
         loadEnemies();
         entityManager.tick();
-        //entityManager.getPlayer().postTick();     // used for shooting feature of player
+        // entityManager.getPlayer().postTick();     // used for shooting feature of player
         itemManager.tick();
 
     }

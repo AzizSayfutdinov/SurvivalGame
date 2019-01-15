@@ -1,10 +1,9 @@
 package dev.Aziz.tilegame.entities.creatures;
 
 import dev.Aziz.tilegame.Handler;
+import dev.Aziz.tilegame.entities.movingObjects.FireBall;
 
 import java.awt.*;
-
-
 
 public class Enemy extends Creature {
 
