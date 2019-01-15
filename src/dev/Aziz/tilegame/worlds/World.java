@@ -7,6 +7,8 @@ import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
+import dev.Aziz.tilegame.entities.movingObjects.MovingObject;
+import dev.Aziz.tilegame.entities.movingObjects.MovingObjectsManager;
 import dev.Aziz.tilegame.entities.statics.House;
 import dev.Aziz.tilegame.entities.statics.Tree;
 import dev.Aziz.tilegame.items.ItemManager;
@@ -52,12 +54,7 @@ public class World{
     private EntityManager entityManager;
     private ItemManager itemManager;
     private TileManager tileManager;
-
-
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
+    private MovingObjectsManager movingObjectsManager;
 
 
     public World(Handler handler, String path){
@@ -90,6 +87,7 @@ public class World{
         entityManager.tick();
         // entityManager.getPlayer().postTick();     // used for shooting feature of player
         itemManager.tick();
+        movingObjectsManager.tick();
 
     }
 
@@ -98,12 +96,14 @@ public class World{
         tileManager.render(g);
         itemManager.render(g);
         entityManager.render(g);
+        movingObjectsManager.render(g);
 
     }
 
     public void init(){
         loadForest();
         itemManager = new ItemManager(handler);
+        movingObjectsManager = new MovingObjectsManager(handler);
 
         entityManager.addEntity(new House(handler, 223, 1130));
         entityManager.addEntity(new House(handler, 223 + 385, 1130));
@@ -166,7 +166,6 @@ public class World{
                  entityManager.addEntity(new Skeleton(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
                  entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
                  break;
-
          }
 
             waves++;
@@ -264,5 +263,17 @@ public class World{
 
     public void setEnemyWaves(int enemyWaves) {
         this.enemyWaves = enemyWaves;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public MovingObjectsManager getMovingObjectsManager() {
+        return movingObjectsManager;
+    }
+
+    public void setMovingObjectsManager(MovingObjectsManager movingObjectsManager) {
+        this.movingObjectsManager = movingObjectsManager;
     }
 }

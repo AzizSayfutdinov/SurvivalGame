@@ -7,9 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e1df328-92db-4de1-b0fc-849ee3c3991b" name="Default Changelist" comment="Enemy class divided into skeleton and orc class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/SurvivalGame_jar/SurvivalGame.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SurvivalGame_jar/SurvivalGame.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/entities/creatures/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/entities/creatures/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/entities/creatures/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/entities/creatures/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/worlds/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SurvivalGame/dev/Aziz/tilegame/worlds/World.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -84,21 +90,21 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="10" />
-          <entry key="java" value="21558" />
+          <entry key="java" value="21922" />
           <entry key="txt" value="309" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21558" />
+          <entry key="JAVA" value="21922" />
           <entry key="PLAIN_TEXT" value="319" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="287" />
+          <entry key="java" value="290" />
           <entry key="tmx" value="1" />
           <entry key="tsx" value="1" />
           <entry key="txt" value="7" />
@@ -107,7 +113,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="287" />
+          <entry key="JAVA" value="290" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="XML" value="10" />
         </counts>
@@ -115,172 +121,157 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/states/GameState.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="197">
-                  <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1581">
-                  <caret line="105" selection-start-line="105" selection-end-line="105" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#7705#7706#0" expanded="true" />
-                    <element signature="e#7740#7741#0" expanded="true" />
-                    <element signature="e#9743#9744#0" expanded="true" />
-                    <element signature="e#9775#9776#0" expanded="true" />
-                    <element signature="e#9828#9829#0" expanded="true" />
-                    <element signature="e#9870#9871#0" expanded="true" />
-                    <element signature="e#9900#9901#0" expanded="true" />
-                    <element signature="e#9929#9930#0" expanded="true" />
-                    <element signature="e#9972#9973#0" expanded="true" />
-                    <element signature="e#10008#10009#0" expanded="true" />
-                    <element signature="e#10046#10047#0" expanded="true" />
-                    <element signature="e#10077#10078#0" expanded="true" />
-                    <element signature="e#10113#10114#0" expanded="true" />
-                    <element signature="e#10142#10143#0" expanded="true" />
-                    <element signature="e#10181#10182#0" expanded="true" />
-                    <element signature="e#10213#10214#0" expanded="true" />
-                    <element signature="e#10251#10252#0" expanded="true" />
-                    <element signature="e#10282#10283#0" expanded="true" />
-                    <element signature="e#10323#10324#0" expanded="true" />
-                    <element signature="e#10359#10360#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/Entity.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObject.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="61">
-                  <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#353#354#0" expanded="true" />
-                    <element signature="e#390#391#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/EntityManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1156">
-                  <caret line="74" selection-start-line="74" selection-end-line="74" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1784#1785#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/EntityManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1156">
-                  <caret line="74" selection-start-line="74" selection-end-line="74" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1784#1785#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/states/GameState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1659">
+              <caret line="167" column="23" selection-start-line="167" selection-start-column="23" selection-end-line="167" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7228#7229#0" expanded="true" />
+                <element signature="e#7271#7272#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="194" column="24" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7705#7706#0" expanded="true" />
+                <element signature="e#7740#7741#0" expanded="true" />
+                <element signature="e#9743#9744#0" expanded="true" />
+                <element signature="e#9775#9776#0" expanded="true" />
+                <element signature="e#9828#9829#0" expanded="true" />
+                <element signature="e#9870#9871#0" expanded="true" />
+                <element signature="e#9900#9901#0" expanded="true" />
+                <element signature="e#9929#9930#0" expanded="true" />
+                <element signature="e#9972#9973#0" expanded="true" />
+                <element signature="e#10008#10009#0" expanded="true" />
+                <element signature="e#10046#10047#0" expanded="true" />
+                <element signature="e#10077#10078#0" expanded="true" />
+                <element signature="e#10113#10114#0" expanded="true" />
+                <element signature="e#10142#10143#0" expanded="true" />
+                <element signature="e#10181#10182#0" expanded="true" />
+                <element signature="e#10213#10214#0" expanded="true" />
+                <element signature="e#10251#10252#0" expanded="true" />
+                <element signature="e#10282#10283#0" expanded="true" />
+                <element signature="e#10323#10324#0" expanded="true" />
+                <element signature="e#10359#10360#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/Entity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#589#590#0" expanded="true" />
+                <element signature="e#611#612#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="169" column="60" lean-forward="true" selection-start-line="169" selection-start-column="60" selection-end-line="169" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/EntityManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1755#1756#0" expanded="true" />
+                <element signature="e#1784#1785#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-466">
+              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+                <element signature="e#771#772#0" expanded="true" />
+                <element signature="e#906#907#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+                <element signature="e#1017#1018#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -320,7 +311,6 @@
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/states/CreditState.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Skeleton.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/ImageLoader.java" />
-        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/EntityManager.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/GameCamera.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/sounds/SoundLoader.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/tiles/TileManager.java" />
@@ -346,13 +336,14 @@
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/Layer.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/sounds/Sound.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/gfx/Assets.java" />
-        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/movingObjectsManager.java" />
-        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java" />
-        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObject.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java" />
         <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java" />
+        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/EntityManager.java" />
+        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java" />
+        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java" />
+        <option value="$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java" />
       </list>
     </option>
   </component>
@@ -589,7 +580,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="plugin&#9;ACTION&#9;WelcomeScreen.Plugins&#10;plug&#9;ACTION&#9;WelcomeScreen.Plugins" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547580312072" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547583246679" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -668,7 +659,7 @@
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20788912" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20788912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -677,7 +668,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.18112798" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.18112798" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30802602" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -697,7 +688,7 @@
       <window_info anchor="right" id="PlantUML" order="8" weight="0.32995737" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20788912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -706,7 +697,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.18112798" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.18112798" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30802602" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -714,7 +705,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5010661" side_tool="true" weight="0.29934925" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.27114967" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.24728851" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.24728851" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -934,10 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="19" column="37" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="37" />
-          <folding>
-            <element signature="e#968#969#0" expanded="true" />
-            <element signature="e#993#994#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1034,13 +1021,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-58">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/Layer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1098,6 +1078,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1108,21 +1120,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Orc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-466">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/EntityManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="693">
+          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1755#1756#0" expanded="true" />
             <element signature="e#1784#1785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1659">
+          <caret line="167" column="23" selection-start-line="167" selection-start-column="23" selection-end-line="167" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7228#7229#0" expanded="true" />
+            <element signature="e#7271#7272#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        <state relative-caret-position="149">
+          <caret line="169" column="60" lean-forward="true" selection-start-line="169" selection-start-column="60" selection-end-line="169" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1131,8 +1179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="693">
+          <caret line="194" column="24" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7705#7706#0" expanded="true" />
@@ -1155,58 +1203,6 @@
             <element signature="e#10282#10283#0" expanded="true" />
             <element signature="e#10323#10324#0" expanded="true" />
             <element signature="e#10359#10360#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/worlds/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/FireBall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/creatures/Creature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/Aziz/tilegame/entities/movingObjects/MovingObjectsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
           </folding>
         </state>
       </provider>
