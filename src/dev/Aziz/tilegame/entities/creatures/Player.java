@@ -3,6 +3,7 @@ package dev.Aziz.tilegame.entities.creatures;
 import dev.Aziz.tilegame.Handler;
 import dev.Aziz.tilegame.entities.Entity;
 import dev.Aziz.tilegame.entities.movingObjects.FireBall;
+import dev.Aziz.tilegame.entities.movingObjects.MovingObject;
 import dev.Aziz.tilegame.gfx.Animation;
 import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.inventory.Inventory;
@@ -33,11 +34,12 @@ public class Player extends Creature{
 
     //Attack timer
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
-    private long lastShootTimer, shootCoolDown = 50, shootTimer = shootCoolDown;
+    private long lastShootTimer, shootCoolDown = 200, shootTimer = shootCoolDown;
     private long lastSoundTimer, soundCoolDown = 300, soundTimer = soundCoolDown;
 
     //Inventory
     private Inventory inventory;
+
 
     public Player(Handler handler, float x, float y){
         super(handler, x,y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -99,6 +101,8 @@ public class Player extends Creature{
 
         checkDirection();
         playSounds();
+        shoot();
+
 
     }
 
@@ -125,7 +129,9 @@ public class Player extends Creature{
 
     }
 
-    public void postTick(){     //to avoid concurrentModificationException
+
+    private void shoot(){
+
 
         shootTimer += System.currentTimeMillis() - lastShootTimer;
         lastShootTimer = System.currentTimeMillis();
@@ -133,29 +139,12 @@ public class Player extends Creature{
         if(shootTimer < shootCoolDown)
             return;
 
-        shoot();
-        shootTimer = 0;
-    }
-
-    private void shoot(){
-
-        FireBall fireBall = new FireBall(handler);
-
         if(handler.getKeyManager().shoot){
-            handler.getWorld().getEntityManager().addEntity(fireBall);     //concurrentModificationException
+            handler.getWorld().getMovingObjectsManager().addObject(new FireBall(handler));    //concurrentModificationException, therefore postTick()
         }
 
-        Rectangle fireBallBounds = fireBall.getCollisionBounds(0f, 0f);
+        shootTimer = 0;
 
-
-        for(Entity e: handler.getWorld().getEntityManager().getEntities()){
-            if(e.equals(fireBall))
-                continue;
-            if(e.getCollisionBounds(0,0).intersects(fireBallBounds)){
-                e.hurt(1);      // amt = amount of damage
-                return;
-            }
-        }
 
     }
 
@@ -238,9 +227,9 @@ public class Player extends Creature{
         g.drawImage(getCurrentAnimationFrameBody(), (int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);
 
         // Bounds
-        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
-        //g.setColor(Color.RED);
-        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + fireBallBounds.x,(int)(y - handler.getGameCamera().getyOffset()) + fireBallBounds.y, fireBallBounds.width, fireBallBounds.height);
+        // g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
+        // g.setColor(Color.RED);
+        // g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + fireBallBounds.x,(int)(y - handler.getGameCamera().getyOffset()) + fireBallBounds.y, fireBallBounds.width, fireBallBounds.height);
 
 
         // Health

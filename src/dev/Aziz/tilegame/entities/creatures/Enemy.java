@@ -1,10 +1,10 @@
 package dev.Aziz.tilegame.entities.creatures;
 
 import dev.Aziz.tilegame.Handler;
+import dev.Aziz.tilegame.entities.movingObjects.FireBall;
+import dev.Aziz.tilegame.entities.movingObjects.MovingObject;
 
 import java.awt.*;
-
-
 
 public class Enemy extends Creature {
 
@@ -20,6 +20,8 @@ public class Enemy extends Creature {
     protected boolean attacking = false;
 
     protected int speed = 0;
+
+
 
 
 
@@ -160,6 +162,20 @@ public class Enemy extends Creature {
         super.moveX();
     }
 
+    public void gettingShot(){
+
+        for(MovingObject m: handler.getWorld().getMovingObjectsManager().getMovingObjects()){
+
+            if(m.getCollisionBounds(-x,-y).intersects(bounds)){
+                this.hurt(1);      // amt = amount of damage
+                handler.getWorld().getMovingObjectsManager().getMovingObjects().remove(m);
+                return;
+            }
+        }
+
+
+    }
+
 
     public void attack(){
 
@@ -180,7 +196,7 @@ public class Enemy extends Creature {
 
         if(attackBounds.intersects(playerBound)){
             handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth() - 1);
-            System.out.println("attack bound intersects collision bound of player");
+
         }
 
         attackTimer = 0;
@@ -194,6 +210,7 @@ public class Enemy extends Creature {
         die();
         move();
         attack();
+        gettingShot();
 
     }
 

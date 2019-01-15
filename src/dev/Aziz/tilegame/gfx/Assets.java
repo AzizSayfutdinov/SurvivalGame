@@ -33,6 +33,7 @@ public class Assets {
     public static BufferedImage[] skeleton_down_attacking, skeleton_up_attacking, skeleton_left_attacking, skeleton_right_attacking;
     public static BufferedImage[] orc_down, orc_up, orc_left, orc_right;
     public static BufferedImage[] orc_down_attacking, orc_up_attacking, orc_left_attacking, orc_right_attacking;
+    public static BufferedImage[] fireball_down, fireball_up, fireball_right, fireball_left;
     public static BufferedImage[] btn_start;
     public static BufferedImage[] btn_options;
     public static BufferedImage[] btn_credits;
@@ -123,6 +124,11 @@ public class Assets {
         btn_exit = new BufferedImage[2];
         btn_restart = new BufferedImage[1];
 
+        fireball_down = new BufferedImage[6];
+        fireball_up = new BufferedImage[6];
+        fireball_right = new BufferedImage[6];
+        fireball_left = new BufferedImage[6];
+
         btn_start[0] = menuSheet1.crop(454, 194, 462, 88);
         btn_start[1] = menuSheet2.crop(454, 194, 462, 88);
 
@@ -157,11 +163,46 @@ public class Assets {
 
         loadWorldTiles();
 
+        loadFireBalls();
+
 
         house = worldSheet.crop(6 * worldTileWidth , 0, 5 * worldTileWidth, 5 * worldTileHeight);
         tree1 = treeSheeet.crop(296, 512, 180, 195);
         tree2 = treeSheeet.crop(671, 512, 163, 195);
         wood = sheet3.crop(width / 2,height / 2, width / 2, height / 2);
+
+
+    }
+
+    private static void loadFireBalls(){
+
+        fireball_down[0] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_01_down.png");
+        fireball_down[1] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_02_down.png");
+        fireball_down[2] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_03_down.png");
+        fireball_down[3] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_04_down.png");
+        fireball_down[4] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_05_down.png");
+        fireball_down[5] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_06_down.png");
+
+        fireball_up[0] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_01_up.png");
+        fireball_up[1] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_02_up.png");
+        fireball_up[2] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_03_up.png");
+        fireball_up[3] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_04_up.png");
+        fireball_up[4] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_05_up.png");
+        fireball_up[5] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_06_up.png");
+
+        fireball_right[0] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_01_right.png");
+        fireball_right[1] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_02_right.png");
+        fireball_right[2] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_03_right.png");
+        fireball_right[3] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_04_right.png");
+        fireball_right[4] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_05_right.png");
+        fireball_right[5] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_06_right.png");
+
+        fireball_left[0] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_01_left.png");
+        fireball_left[1] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_02_left.png");
+        fireball_left[2] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_03_left.png");
+        fireball_left[3] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_04_left.png");
+        fireball_left[4] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_05_left.png");
+        fireball_left[5] = ImageLoader.loadImage("/textures/fireball/Fireball_Effect_06_left.png");
 
 
     }
