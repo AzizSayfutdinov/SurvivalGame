@@ -66,7 +66,7 @@ public class World{
 
         // DEBUG entities
         //entityManager.addEntity(new Skeleton(handler,ENEMY_SPAWN_X1, ENEMY_SPAWN_Y1));
-        //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
+        entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X2, ENEMY_SPAWN_Y2));
         //entityManager.addEntity(new Orc(handler, ENEMY_SPAWN_X3, ENEMY_SPAWN_Y3));
         //entityManager.addEntity(new Tree(handler, 400, 400, 1));
         //entityManager.addEntity(new Tree(handler, 400, 600, 2));
@@ -83,7 +83,7 @@ public class World{
 
     public void tick(){
 
-        loadEnemies();
+        //loadEnemies();
         entityManager.tick();
         // entityManager.getPlayer().postTick();     // used for shooting feature of player
         itemManager.tick();

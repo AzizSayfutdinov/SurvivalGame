@@ -168,6 +168,7 @@ public class Enemy extends Creature {
 
             if(m.getCollisionBounds(-x,-y).intersects(bounds)){
                 this.hurt(1);      // amt = amount of damage
+                handler.getWorld().getMovingObjectsManager().getMovingObjects().remove(m);
                 return;
             }
         }
