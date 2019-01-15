@@ -207,11 +207,10 @@ public class World{
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 tilesID[x][y] = Utils.parseInt(tokens[(x + y * width)]);  //finding the corresponding data, basic math
-                System.out.print(tilesID[x][y] + " ");
             }
-            System.out.println("\n");
+
         }
-        System.out.println("Loading world finished!");
+
 
     }
 

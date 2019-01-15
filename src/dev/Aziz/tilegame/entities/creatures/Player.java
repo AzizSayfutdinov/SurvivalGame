@@ -6,6 +6,7 @@ import dev.Aziz.tilegame.entities.movingObjects.FireBall;
 import dev.Aziz.tilegame.gfx.Animation;
 import dev.Aziz.tilegame.gfx.Assets;
 import dev.Aziz.tilegame.inventory.Inventory;
+import dev.Aziz.tilegame.sounds.Sound;
 import dev.Aziz.tilegame.states.State;
 
 import java.awt.*;
@@ -28,12 +29,12 @@ public class Player extends Creature{
 
     private Animation lastAnimation;
 
-
     private int points = 0;
 
     //Attack timer
     private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
     private long lastShootTimer, shootCoolDown = 50, shootTimer = shootCoolDown;
+    private long lastSoundTimer, soundCoolDown = 300, soundTimer = soundCoolDown;
 
     //Inventory
     private Inventory inventory;
@@ -50,6 +51,7 @@ public class Player extends Creature{
 
         lastAttackTimer = System.currentTimeMillis();
         lastShootTimer = System.currentTimeMillis();
+        lastSoundTimer = System.currentTimeMillis();
 
         int playerSpeed = 40; //ms
         //Init of animations
@@ -64,6 +66,7 @@ public class Player extends Creature{
         animAttackLeft = new Animation(playerSpeed, Assets.player_left_attacking);
 
         lastAnimation = animDown;
+
 
         //Inventory
         inventory = new Inventory(handler);
@@ -95,6 +98,24 @@ public class Player extends Creature{
         inventory.tick();
 
         checkDirection();
+        playSounds();
+
+    }
+
+    private void playSounds(){
+
+        soundTimer += System.currentTimeMillis() - lastSoundTimer;
+        lastSoundTimer = System.currentTimeMillis();
+
+        if(soundTimer < soundCoolDown)
+            return;
+
+
+        if(handler.getKeyManager().up || handler.getKeyManager().down || handler.getKeyManager().left || handler.getKeyManager().right){
+            new Thread(new Sound(Assets.walkingSound)).start();
+        }
+
+        soundTimer = 0;
 
     }
 
@@ -151,9 +172,12 @@ public class Player extends Creature{
             return;
         }
 
+        if(handler.getKeyManager().attackRight || handler.getKeyManager().attackLeft || handler.getKeyManager().attackUp || handler.getKeyManager().attackDown)
+            new Thread(new Sound(Assets.attackingSwordSound)).start();
+
         Rectangle cb = getCollisionBounds(0,0);
         Rectangle ar = new Rectangle();
-        int arSize = 20; //px
+        int arSize = 25; //px
         ar.width = arSize;
         ar.height = arSize;
 

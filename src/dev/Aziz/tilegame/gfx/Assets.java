@@ -14,8 +14,10 @@ public class Assets {
     private static final int worldTileWidth = 16, worldTileHeight = 16;
 
 
+    public static Clip walkingSound;
     public static Clip testSound;
     public static Clip backGroundMusic;
+    public static Clip attackingSwordSound;
 
     public static Font font28;  //size = 28;
     public static Font font22;
@@ -53,6 +55,8 @@ public class Assets {
 
     public static void init(){
 
+        walkingSound = SoundLoader.loadSound("/sounds/sfx_step_grass.wav");
+        attackingSwordSound = SoundLoader.loadSound("/sounds/sword_hit.wav");
         testSound = SoundLoader.loadSound("/sounds/stepdirt_1.wav");
         backGroundMusic = SoundLoader.loadSound("/sounds/Heroic Demise.wav");
 

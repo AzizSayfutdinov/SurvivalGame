@@ -33,16 +33,13 @@ public class Layer {
         String file = Utils.loadXMLFileAsString(path, index);
         String[] tokens = file.split(",");       //file.split(",") for comma
 
-
-        System.out.println("Layer-IDs: \n ------------------------------------------------------\n");
         for(int y = 0; y < handler.getWorld().getWidth(); y++){
             for(int x = 0; x < handler.getWorld().getHeight(); x++){
                 solidTilesID[x][y] = Utils.parseInt(tokens[(x + y * handler.getWorld().getWidth())]);  //finding the corresponding data
-                System.out.print(solidTilesID[x][y] + " ");
             }
-            System.out.println("\n");
+
         }
-        System.out.println("Loading Layer finished! \n-----------------------------------------------------------------");
+
 
     }
 
