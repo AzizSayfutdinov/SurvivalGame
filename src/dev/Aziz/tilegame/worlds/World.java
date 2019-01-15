@@ -123,13 +123,13 @@ public class World{
 
     public void loadForest(){
 
-        int rangeX = (7 - 1) + 1;
-        int rangeY = (6 - 1) + 1;
+        int rangeX = (8 - 1) + 1;
+        int rangeY = (5 - 1) + 1;
 
 
         for(int i = 0; i < 50; i++){
-            int x = -80 + ((int)(Math.random() * rangeX) + 1) * (145 + ((int)(Math.random() * 10) - 10));
-            int y = ((int)(Math.random() * rangeY) + 1) * (170 + ((int)(Math.random() * 30) - 15));
+            int x = -80 + ((int)(Math.random() * rangeX) + 1) * (160 + ((int)(Math.random() * 10) - 10));
+            int y = ((int)(Math.random() * rangeY) + 1) * (190 + ((int)(Math.random() * 30) - 15));
             int tree = (int)(Math.random() * 2) + 1;
 
             entityManager.addEntity(new Tree(handler, x, y, tree));

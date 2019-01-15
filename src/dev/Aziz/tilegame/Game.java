@@ -86,6 +86,7 @@ public class Game implements Runnable{
         State.setState(menuState);
 
         backgroundMusic = new Sound(Assets.backGroundMusic);
+        backgroundMusic.setVolume(-25);
 
     }
 
@@ -134,6 +135,7 @@ public class Game implements Runnable{
 
         soundThread = new Thread(backgroundMusic);
         soundThread.start();
+
 
         //game loop: picture of game loop
         while(running){

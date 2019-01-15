@@ -12,7 +12,7 @@ public class Enemy extends Creature {
 
     protected Rectangle playerBound;
 
-    private long lastAttackTimer, attackCooldown = 200, attackTimer = attackCooldown;
+    private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
 
     protected int enemyAnimSpeed = 100;
 

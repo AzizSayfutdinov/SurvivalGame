@@ -2,6 +2,7 @@ package dev.Aziz.tilegame.sounds;
 
 
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 public class Sound implements Runnable {
 
@@ -15,5 +16,12 @@ public class Sound implements Runnable {
     public void run() {
 
         SoundLoader.playSound(clip);
+    }
+
+    public void setVolume(float volume){
+
+        FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        volumeControl.setValue(volume);
+
     }
 }
