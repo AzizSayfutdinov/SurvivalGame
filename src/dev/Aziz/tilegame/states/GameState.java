@@ -34,6 +34,7 @@ public class GameState extends State {
         elapsedTime += (currentTime - previousTime) / 1000.0;
         previousTime = currentTime;
         getInput();
+        
 
     }
 
