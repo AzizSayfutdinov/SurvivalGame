@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class FireBall extends MovingObject {
 
     private int speed = 10;
+    private int animSpeed = 70;
 
     private Animation animDown;
     private Animation animUp;
@@ -25,10 +26,10 @@ public class FireBall extends MovingObject {
         bounds.width = 2 * width;
         bounds.height = 2 * height;
 
-        animDown = new Animation(speed, Assets.fireball_down);
-        animUp = new Animation(speed, Assets.fireball_up);
-        animRight = new Animation(speed, Assets.fireball_right);
-        animLeft = new Animation(speed, Assets.fireball_left);
+        animDown = new Animation(animSpeed, Assets.fireball_down);
+        animUp = new Animation(animSpeed, Assets.fireball_up);
+        animRight = new Animation(animSpeed, Assets.fireball_right);
+        animLeft = new Animation(animSpeed, Assets.fireball_left);
 
     }
 
