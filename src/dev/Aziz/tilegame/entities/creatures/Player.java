@@ -168,8 +168,12 @@ public class Player extends Creature{
             return;
         }
 
-        if(handler.getKeyManager().attackRight || handler.getKeyManager().attackLeft || handler.getKeyManager().attackUp || handler.getKeyManager().attackDown)
-            new Thread(new Sound(Assets.attackingSwordSound)).start();
+        // if(handler.getKeyManager().attackRight || handler.getKeyManager().attackLeft || handler.getKeyManager().attackUp || handler.getKeyManager().attackDown)
+        //     new Thread(new Sound(Assets.attackingSwordSound)).start();
+        if(handler.getKeyManager().attack){
+            new Thread((new Sound(Assets.attackingSwordSound))).start();
+        }
+
 
         Rectangle cb = getCollisionBounds(0,0);
         Rectangle ar = new Rectangle();
@@ -177,16 +181,16 @@ public class Player extends Creature{
         ar.width = arSize;
         ar.height = arSize;
 
-        if(handler.getKeyManager().attackUp){
+        if(handler.getKeyManager().attack && lastAnimation == animUp){
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y - arSize;                       // -arSize because we attack upwards
-        } else if(handler.getKeyManager().attackDown){
+        } else if(handler.getKeyManager().attack && lastAnimation == animDown){
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y + cb.height;
-        } else if(handler.getKeyManager().attackLeft){
+        } else if(handler.getKeyManager().attack && lastAnimation == animLeft){
             ar.x = cb.x - arSize;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
-        } else if(handler.getKeyManager().attackRight){
+        } else if(handler.getKeyManager().attack && lastAnimation == animRight){
             ar.x = cb.x + cb.width;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
         } else {
@@ -277,7 +281,7 @@ public class Player extends Creature{
             lastAnimation = animUp;
             return animUp.getCurrentFrame();
         }
-        if(handler.getKeyManager().attackUp) {
+        if(handler.getKeyManager().attack && lastAnimation == animUp) {
             lastAnimation = animUp;
             return animAttackUp.getCurrentFrame();
         }
@@ -285,7 +289,7 @@ public class Player extends Creature{
             lastAnimation = animDown;
             return animDown.getCurrentFrame();
         }
-        if(handler.getKeyManager().attackDown){
+        if(handler.getKeyManager().attack && lastAnimation == animDown){
             lastAnimation = animDown;
             return animAttackDown.getCurrentFrame();
         }
@@ -293,7 +297,7 @@ public class Player extends Creature{
             lastAnimation = animLeft;
             return animLeft.getCurrentFrame();
         }
-        if(handler.getKeyManager().attackLeft){
+        if(handler.getKeyManager().attack && lastAnimation == animLeft){
             lastAnimation = animLeft;
             return animAttackLeft.getCurrentFrame();
         }
@@ -301,7 +305,7 @@ public class Player extends Creature{
             lastAnimation = animRight;
             return animRight.getCurrentFrame();
         }
-        if(handler.getKeyManager().attackRight){
+        if(handler.getKeyManager().attack && lastAnimation == animRight){
             lastAnimation = animRight;
             return animAttackRight.getCurrentFrame();
         }

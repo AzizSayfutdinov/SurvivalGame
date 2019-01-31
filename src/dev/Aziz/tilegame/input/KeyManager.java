@@ -7,7 +7,8 @@ public class KeyManager implements KeyListener {
 
     private boolean[] keys, justPressed, cantPress;
     public boolean up, down, left, right, esc;
-    public boolean attackUp, attackDown, attackLeft, attackRight;
+    // public boolean attackUp, attackDown, attackLeft, attackRight;
+    public boolean attack;
     public boolean shoot;
 
     public KeyManager(){
@@ -42,10 +43,12 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
 
-        attackDown = keys[KeyEvent.VK_DOWN];
-        attackUp = keys[KeyEvent.VK_UP];
-        attackLeft = keys[KeyEvent.VK_LEFT];
-        attackRight = keys[KeyEvent.VK_RIGHT];
+        // attackDown = keys[KeyEvent.VK_DOWN];
+        // attackUp = keys[KeyEvent.VK_UP];
+        // attackLeft = keys[KeyEvent.VK_LEFT];
+        // attackRight = keys[KeyEvent.VK_RIGHT];
+
+        attack = keys[KeyEvent.VK_J];
 
         esc = keys[KeyEvent.VK_ESCAPE];
 
