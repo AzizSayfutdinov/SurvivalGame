@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class FireBall extends MovingObject {
 
     private int speed = 10;
+    private int animSpeed = 70;
 
     private Animation animDown;
     private Animation animUp;
@@ -18,17 +19,17 @@ public class FireBall extends MovingObject {
     private Animation animLeft;
 
     public FireBall(Handler handler) {
-        super(handler, handler.getWorld().getEntityManager().getPlayer().getX() - 20, handler.getWorld().getEntityManager().getPlayer().getY(),Tile.TILEWIDTH / 2, Tile.TILEHEIGHT / 2);
+        super(handler, handler.getWorld().getEntityManager().getPlayer().getX() - 20, handler.getWorld().getEntityManager().getPlayer().getY() + 10,Tile.TILEWIDTH / 2, Tile.TILEHEIGHT / 2);
 
         bounds.x = 34;
-        bounds.y = 32;
+        bounds.y = 30;
         bounds.width = 2 * width;
         bounds.height = 2 * height;
 
-        animDown = new Animation(speed, Assets.fireball_down);
-        animUp = new Animation(speed, Assets.fireball_up);
-        animRight = new Animation(speed, Assets.fireball_right);
-        animLeft = new Animation(speed, Assets.fireball_left);
+        animDown = new Animation(animSpeed, Assets.fireball_down);
+        animUp = new Animation(animSpeed, Assets.fireball_up);
+        animRight = new Animation(animSpeed, Assets.fireball_right);
+        animLeft = new Animation(animSpeed, Assets.fireball_left);
 
     }
 
@@ -62,7 +63,7 @@ public class FireBall extends MovingObject {
 
         //g.setColor(Color.red);
         //g.fillRect((int) (x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height);
-        g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
+        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()) + bounds.x,(int)(y - handler.getGameCamera().getyOffset()) + bounds.y, bounds.width, bounds.height);
 
     }
 

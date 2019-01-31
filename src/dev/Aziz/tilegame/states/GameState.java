@@ -33,6 +33,8 @@ public class GameState extends State {
         currentTime = System.currentTimeMillis();
         elapsedTime += (currentTime - previousTime) / 1000.0;
         previousTime = currentTime;
+        getInput();
+
 
     }
 
@@ -46,4 +48,14 @@ public class GameState extends State {
 
     }
 
+    private void getInput(){
+
+        if(handler.getKeyManager().esc){
+            handler.getGame().setNewGame(true);
+            State.setState(handler.getGame().menuState);
+            handler.getMouseManager().setStateActive(true);
+
+        }
+
+    }
 }

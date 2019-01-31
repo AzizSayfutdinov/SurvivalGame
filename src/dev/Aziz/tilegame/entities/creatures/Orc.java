@@ -32,7 +32,7 @@ public class Orc extends Enemy {
         bounds.height = 25;
 
         health = ORC_HEALTH;
-        speed = 0;
+        speed = 4;
 
         animDown = new Animation(enemyAnimSpeed, Assets.orc_down);
         animUp = new Animation(enemyAnimSpeed, Assets.orc_up);
@@ -67,7 +67,7 @@ public class Orc extends Enemy {
 
         //Health
         g.setColor(Color.BLACK);
-        g.drawRect((int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), getWidth(), 10);
+        g.drawRect((int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset() - 10), getWidth(), 10);
         if(health > 16)
             g.setColor(Color.GREEN);
         else if(health > 9)

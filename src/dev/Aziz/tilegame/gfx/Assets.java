@@ -18,6 +18,7 @@ public class Assets {
     public static Clip testSound;
     public static Clip backGroundMusic;
     public static Clip attackingSwordSound;
+    public static Clip fireBallSound;
 
     public static Font font28;  //size = 28;
     public static Font font22;
@@ -60,6 +61,7 @@ public class Assets {
         attackingSwordSound = SoundLoader.loadSound("/sounds/sword_hit.wav");
         testSound = SoundLoader.loadSound("/sounds/stepdirt_1.wav");
         backGroundMusic = SoundLoader.loadSound("/sounds/Heroic Demise.wav");
+        fireBallSound = SoundLoader.loadSound("/sounds/fireball.wav");
 
         font100 = FontLoader.loadFont("res/fonts/slkscr.ttf", 100);
         font50 = FontLoader.loadFont("res/fonts/slkscr.ttf", 50);
