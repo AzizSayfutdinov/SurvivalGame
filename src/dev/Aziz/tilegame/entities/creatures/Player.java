@@ -116,7 +116,11 @@ public class Player extends Creature{
 
 
         if(handler.getKeyManager().up || handler.getKeyManager().down || handler.getKeyManager().left || handler.getKeyManager().right){
-            new Thread(new Sound(Assets.walkingSound)).start();
+
+            Sound sound = new Sound(Assets.walkingSound);
+            sound.setVolume(-15);
+            new Thread(sound).start();
+
         }
 
         soundTimer = 0;
@@ -141,7 +145,9 @@ public class Player extends Creature{
 
         if(handler.getKeyManager().shoot){
             handler.getWorld().getMovingObjectsManager().addObject(new FireBall(handler));    //concurrentModificationException, therefore postTick()
-            new Thread(new Sound(Assets.fireBallSound)).start();
+            Sound sound = new Sound(Assets.fireBallSound);
+            sound.setVolume(-22);
+            new Thread(sound).start();
         }
 
         shootTimer = 0;
