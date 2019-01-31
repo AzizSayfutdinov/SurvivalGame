@@ -76,7 +76,7 @@ public class MenuState extends State {
         g.fillRect(0,0,handler.getGame().getWidth(), handler.getGame().getHeight());
         Text.drawString(g, "WELCOME TO THE SURVIVAL-GAME!", 50, 50, false, Color.WHITE, Assets.font50);
         Text.drawString(g, "Use the W,A,S,D keys to move!", 50, 100, false, Color.RED, Assets.font28);
-        Text.drawString(g, "Use arrow keys to attack!", 50, 130, false, Color.RED, Assets.font28);
+        Text.drawString(g, "Use the J key to attack!", 50, 130, false, Color.RED, Assets.font28);
         Text.drawString(g, "Use space key to shoot fireballs!", 50, 160, false, Color.RED, Assets.font28);
         Text.drawString(g, "Good luck!", 50, 190, false, Color.RED, Assets.font28);
 
