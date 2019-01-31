@@ -58,4 +58,12 @@ public class GameState extends State {
         }
 
     }
+
+    public double getElapsedTime() {
+        return elapsedTime;
+    }
+
+    public void setElapsedTime(double elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
 }
