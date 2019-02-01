@@ -9,10 +9,8 @@ import java.awt.image.BufferedImage;
 //Contains any images, sounds, music, ect.
 public class Assets {
 
-
     private static final int width = 64, height = 64;
     private static final int worldTileWidth = 16, worldTileHeight = 16;
-
 
     public static Clip walkingSound;
     public static Clip testSound;
