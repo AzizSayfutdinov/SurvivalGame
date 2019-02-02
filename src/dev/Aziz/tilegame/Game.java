@@ -86,7 +86,7 @@ public class Game implements Runnable{
         State.setState(menuState);
 
         backgroundMusic = new Sound(Assets.backGroundMusic);
-        backgroundMusic.setVolume(-25);
+        //backgroundMusic.setVolume();
 
     }
 

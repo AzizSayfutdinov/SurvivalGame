@@ -167,7 +167,7 @@ public class Enemy extends Creature {
         for(MovingObject m: handler.getWorld().getMovingObjectsManager().getMovingObjects()){
 
             if(m.getCollisionBounds(-x,-y).intersects(bounds)){
-                this.hurt(1);      // amt = amount of damage
+                this.hurt(15);      // amt = amount of damage
                 handler.getWorld().getMovingObjectsManager().getMovingObjects().remove(m);
                 return;
             }

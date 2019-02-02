@@ -7,7 +7,6 @@ import dev.Aziz.tilegame.entities.creatures.Enemy;
 import dev.Aziz.tilegame.entities.creatures.Orc;
 import dev.Aziz.tilegame.entities.creatures.Player;
 import dev.Aziz.tilegame.entities.creatures.Skeleton;
-import dev.Aziz.tilegame.entities.movingObjects.MovingObject;
 import dev.Aziz.tilegame.entities.movingObjects.MovingObjectsManager;
 import dev.Aziz.tilegame.entities.statics.House;
 import dev.Aziz.tilegame.entities.statics.Tree;
@@ -18,8 +17,7 @@ import dev.Aziz.tilegame.utils.Utils;
 
 import java.awt.*;
 
-
-public class World{
+public class World {
 
     public static final int WORLD_WIDTH = 50;
     public static final int WORLD_HEIGHT = 50;

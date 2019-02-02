@@ -28,6 +28,7 @@ public class CreditState extends State {
         Text.drawString(g, "Aziz Sayfutdinov", handler.getGame().getWidth() / 2, 350, true, Color.WHITE, Assets.font22);
         Text.drawString(g, "Sound", handler.getGame().getWidth() / 2, 450, true, Color.GREEN, Assets.font22);
         Text.drawString(g, "Aziz Sayfutdinov", handler.getGame().getWidth() / 2, 500, true, Color.WHITE, Assets.font22);
+
     }
 
 
